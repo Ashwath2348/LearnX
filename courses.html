@@ -1,1 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>E-Learn Quest</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1 class="title">E-Learn Quest</h1>
+  <p class="subtitle">Gamify your learning. Earn points. Unlock levels. Master skills.</p>
+
+  <div class="features">
+    <button onclick="showFeature('logic')">Only Logic Input</button>
+    <button onclick="showFeature('audiobooks')">Audiobooks</button>
+    <button onclick="showFeature('visuals')">Visual Learning</button>
+  </div>
+
+  <div id="featureDisplay">
+    <div id="logic" class="feature-section">
+      <h2>Logic Questions</h2>
+      <div id="questionsContainer"></div>
+      <p id="scoreDisplay"></p>
+    </div>
+
+    <div id="audiobooks" class="feature-section">
+      <h2>Learn by Listening</h2>
+      <div class="audio-list">
+        <audio controls src="audio1.mp3"></audio>
+        <audio controls src="audio2.mp3"></audio>
+        <audio controls src="audio3.mp3"></audio>
+        <audio controls src="audio4.mp3"></audio>
+        <audio controls src="audio5.mp3"></audio>
+      </div>
+    </div>
+
+    <div id="visuals" class="feature-section">
+      <h2>Visual Learning</h2>
+      <div class="video-list">
+        <video controls width="320" src="video1.mp4"></video>
+        <video controls width="320" src="video2.mp4"></video>
+        <video controls width="320" src="video3.mp4"></video>
+        <video controls width="320" src="video4.mp4"></video>
+        <video controls width="320" src="video5.mp4"></video>
+      </div>
+      <h3>Build with Game</h3>
+      <iframe src="https://scratch.mit.edu/projects/830328266/embed" width="485" height="402" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
 
