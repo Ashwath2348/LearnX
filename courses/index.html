@@ -1,84 +1,59 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>E-Learn Quest</title>
+  <title>Only Logic Input</title>
   <style>
     body {
+      background-color: #000;
+      color: #00ff88;
       font-family: Arial, sans-serif;
-      background: #e3f5ff;
-      margin: 0;
-      padding: 20px;
       text-align: center;
-    }
-
-    .button-container {
-      margin: 20px 0;
-    }
-
-    .button-container button {
-      background-color: #48b6f0;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      margin: 0 10px;
-      border-radius: 20px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-
-    .content-section {
-      display: none;
-      margin-top: 30px;
-      padding: 20px;
-      background-color: white;
-      border-radius: 15px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      padding: 50px;
     }
 
     h2 {
-      color: #0077cc;
+      font-size: 28px;
+      margin-bottom: 30px;
+    }
+
+    p {
+      font-size: 18px;
+      margin: 20px 0 10px;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      font-size: 16px;
+      width: 250px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    input[type="submit"] {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-left: 10px;
+      border-radius: 5px;
+      border: none;
+      background-color: #fff;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #ddd;
     }
   </style>
 </head>
 <body>
 
-  <h1>E-Learn Quest</h1>
-  <p>Gamify your learning. Earn points. Unlock levels. Master skills.</p>
+  <h2>Logic Questions</h2>
 
-  <div class="button-container">
-    <button onclick="openSection('logic')">Only Logic Input</button>
-    <button onclick="openSection('audio')">Audiobooks</button>
-    <button onclick="openSection('visual')">Visual Learning</button>
-  </div>
-
-  <!-- Content sections -->
-  <div id="logic" class="content-section">
-    <h2>Logic Questions</h2>
-    <p>Question 1: Placeholder</p>
-    <p>Question 2: Placeholder</p>
-    <p>Question 3: Placeholder</p>
-  </div>
-
-  <div id="audio" class="content-section">
-    <h2>Learn by Listening</h2>
-    <audio controls><source src="audio1.mp3" type="audio/mp3"></audio>
-    <audio controls><source src="audio2.mp3" type="audio/mp3"></audio>
-    <audio controls><source src="audio3.mp3" type="audio/mp3"></audio>
-  </div>
-
-  <div id="visual" class="content-section">
-    <h2>Visual Learning</h2>
-    <p>[Insert visual content here]</p>
-  </div>
-
-  <script>
-    function openSection(sectionId) {
-      document.querySelectorAll('.content-section').forEach(el => el.style.display = 'none');
-      document.getElementById(sectionId).style.display = 'block';
-    }
-  </script>
+  <p>Reverse a string using a data structure.</p>
+  <form>
+    <input type="text" placeholder="Enter keyword logic..." />
+    <input type="submit" value="Submit" />
+  </form>
 
 </body>
 </html>
