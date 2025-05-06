@@ -1,37 +1,57 @@
 const video = document.getElementById("webcam");
-const canvas = document.getElementById("captureCanvas");
-const context = canvas.getContext("2d");
+const captureButton = document.getElementById("captureButton");
+const quoteBox = document.getElementById("quote-box");
+const moodInput = document.getElementById("moodInput");
+const introScreen = document.getElementById("introScreen");
+const mainContent = document.getElementById("mainContent");
+const capturedPhoto = document.getElementById("capturedPhoto");
 
-captureBtn.addEventListener("click", async () => {
-  const videoWidth = video.videoWidth;
-  const videoHeight = video.videoHeight;
+navigator.mediaDevices.getUserMedia({ video: true })
+  .then(stream => {
+    video.srcObject = stream;
+  })
+  .catch(err => {
+    alert("Please allow webcam access to proceed.");
+    console.error("Webcam error:", err);
+  });
 
-  // Set canvas size dynamically just in case
-  canvas.width = videoWidth;
-  canvas.height = videoHeight;
+const quotes = {
+  happy: "That's great! Keep the energy going! 😊",
+  sad: "It's okay to feel sad. Brighter days are ahead 🌈",
+  tired: "Rest is productive too. Recharge and rise again. 🔋",
+  anxious: "You’ve got this — one breath at a time. 💚",
+  motivated: "That fire inside you? Let it blaze! 🔥",
+  default: "Whatever your mood — you're stronger than you know 💪"
+};
 
-  // Draw the current video frame to canvas
-  context.drawImage(video, 0, 0, videoWidth, videoHeight);
+// Capture button functionality
+captureButton.addEventListener('click', () => {
+  const canvas = document.createElement("canvas");
+  const context = canvas.getContext("2d");
 
-  // Analyze the canvas image for expressions
-  const detections = await faceapi
-    .detectSingleFace(canvas)
-    .withFaceExpressions();
+  // Set the canvas dimensions to the video size
+  canvas.width = video.videoWidth;
+  canvas.height = video.videoHeight;
 
-  if (detections) {
-    const expressions = detections.expressions;
-    let mood = 'default';
-    let max = 0;
+  // Draw the current video frame to the canvas
+  context.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-    for (const [expression, confidence] of Object.entries(expressions)) {
-      if (confidence > max) {
-        max = confidence;
-        mood = expression;
-      }
-    }
+  // Convert the canvas image to a data URL
+  const photoDataUrl = canvas.toDataURL();
 
-    quoteBox.textContent = quotes[mood] || quotes.default;
-  } else {
-    quoteBox.textContent = "No face detected. Try again!";
-  }
+  // Display the captured photo in the photo box
+  capturedPhoto.src = photoDataUrl;
+  capturedPhoto.style.display = 'block'; // Ensure it's visible after capture
 });
+
+// Mood motivation based on the input
+function showMotivation() {
+  const mood = moodInput.value.toLowerCase().trim();
+  const message = quotes[mood] || quotes["default"];
+  quoteBox.textContent = message;
+
+  setTimeout(() => {
+    introScreen.style.display = "none";
+    mainContent.style.display = "block";
+  }, 3000); // show main site after 3 seconds
+}
