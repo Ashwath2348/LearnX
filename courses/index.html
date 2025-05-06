@@ -1,30 +1,83 @@
-<div class="button-container">
-  <button onclick="openSection('logic')">Only Logic Input</button>
-  <button onclick="openSection('audio')">Audiobooks</button>
-  <button onclick="openSection('visual')">Visual Learning</button>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>E-Learn Quest</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #e3f5ff;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
 
-<!-- Hidden sections -->
-<div id="logic" class="content-section" style="display:none;">
-  <h2>Logic Quiz</h2>
-  <!-- Insert quiz content here -->
-</div>
+    .button-container {
+      margin: 20px 0;
+    }
 
-<div id="audio" class="content-section" style="display:none;">
-  <h2>Audiobooks</h2>
-  <!-- Insert audio content here -->
-</div>
+    .button-container button {
+      background-color: #48b6f0;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin: 0 10px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 16px;
+    }
 
-<div id="visual" class="content-section" style="display:none;">
-  <h2>Visual Learning</h2>
-  <!-- Insert visual content here -->
-</div>
+    .content-section {
+      display: none;
+      margin-top: 30px;
+      padding: 20px;
+      background-color: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
 
-<script>
-  function openSection(sectionId) {
-    // Hide all sections
-    document.querySelectorAll('.content-section').forEach(el => el.style.display = 'none');
-    // Show selected section
-    document.getElementById(sectionId).style.display = 'block';
-  }
-</script>
+    h2 {
+      color: #0077cc;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>E-Learn Quest</h1>
+  <p>Gamify your learning. Earn points. Unlock levels. Master skills.</p>
+
+  <div class="button-container">
+    <button onclick="openSection('logic')">Only Logic Input</button>
+    <button onclick="openSection('audio')">Audiobooks</button>
+    <button onclick="openSection('visual')">Visual Learning</button>
+  </div>
+
+  <!-- Content sections -->
+  <div id="logic" class="content-section">
+    <h2>Logic Questions</h2>
+    <p>Question 1: Placeholder</p>
+    <p>Question 2: Placeholder</p>
+    <p>Question 3: Placeholder</p>
+  </div>
+
+  <div id="audio" class="content-section">
+    <h2>Learn by Listening</h2>
+    <audio controls><source src="audio1.mp3" type="audio/mp3"></audio>
+    <audio controls><source src="audio2.mp3" type="audio/mp3"></audio>
+    <audio controls><source src="audio3.mp3" type="audio/mp3"></audio>
+  </div>
+
+  <div id="visual" class="content-section">
+    <h2>Visual Learning</h2>
+    <p>[Insert visual content here]</p>
+  </div>
+
+  <script>
+    function openSection(sectionId) {
+      document.querySelectorAll('.content-section').forEach(el => el.style.display = 'none');
+      document.getElementById(sectionId).style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
