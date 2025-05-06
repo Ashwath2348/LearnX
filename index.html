@@ -69,14 +69,15 @@
       color: #065;
       font-weight: bold;
     }
-    .captured-photo {
-      margin-top: 20px;
-      border: 2px solid #04aa6d;
-      border-radius: 12px;
-      width: 320px;
-      height: 240px;
-      object-fit: cover;
-    }
+   .captured-photo {
+  margin-top: 20px;
+  border: 2px solid #04aa6d;
+  border-radius: 12px;
+  width: 320px;
+  height: 240px;
+  object-fit: contain; /* Ensures the entire image is shown within the box */
+  display: none; /* Initially hidden, shown after capture */
+}
 
     /* Main site hidden initially */
     .main-content {
