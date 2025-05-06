@@ -9,13 +9,24 @@
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background-color: #f4f8f6;
+      background: linear-gradient(135deg, #00A878, #00B27F);
       color: #222;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
     }
 
     .container {
       display: flex;
-      min-height: 100vh;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      max-width: 1200px;
+      width: 100%;
+      min-height: 80vh;
     }
 
     /* Sidebar */
@@ -57,20 +68,7 @@
     .menu li:hover,
     .menu li.active {
       background-color: #f0f0f0;
-      border-left: 4px solid #222;
-    }
-
-    .upgrade-box {
-      background-color: #fff8e1;
-      padding: 16px;
-      border-radius: 10px;
-      margin-top: 40px;
-    }
-
-    .upgrade-box strong {
-      display: block;
-      margin-bottom: 6px;
-      color: #ff9800;
+      border-left: 4px solid #00A878;
     }
 
     /* Main Content */
@@ -79,23 +77,14 @@
       padding: 60px 40px;
     }
 
-    .badge {
-      background-color: #fff3cd;
-      color: #8a6d3b;
-      padding: 6px 14px;
-      border-radius: 6px;
-      font-size: 0.85rem;
-      display: inline-block;
-      margin-bottom: 10px;
-    }
-
     .main h2 {
       font-size: 2rem;
       margin-bottom: 10px;
+      color: #00A878;
     }
 
     .main p {
-      color: #666;
+      color: #555;
       font-size: 1rem;
       margin-bottom: 30px;
     }
@@ -136,7 +125,7 @@
     }
 
     .form-box button {
-      background-color: #333;
+      background-color: #00A878;
       color: white;
       padding: 12px 18px;
       border: none;
@@ -147,8 +136,9 @@
     }
 
     .form-box button:hover {
-      background-color: #111;
+      background-color: #009167;
     }
+
   </style>
 </head>
 <body>
@@ -158,22 +148,17 @@
     <aside class="sidebar">
       <div>
         <h1>AI Tutor</h1>
-      
-
         <ul class="menu">
           <li class="active">➕ New Course</li>
           <li>📚 My Courses</li>
           <li>🌟 Staff Picks</li>
           <li>💬 Community</li>
         </ul>
-
-        
       </div>
     </aside>
 
     <!-- Main Content -->
     <main class="main">
-     
       <h2>What can I help you learn?</h2>
       <p>Enter a topic below to generate a personalized course for it</p>
 
