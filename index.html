@@ -272,25 +272,26 @@
     // Load face-api models
     async function loadModels() {
       const MODEL_URL = 'https://cdn.jsdelivr.net/npm/face-api.js/models';
-      await Promise.all([
-        faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL),
-        faceapi.nets.faceExpressionNet.loadFromUri(MODEL_URL),
-        faceapi.nets.ssdMobilenetv1.loadFromUri(MODEL_URL)
-      ]);
-      console.log("Models loaded successfully");
+      await faceapi.nets.ssdMobilenetv1.loadFromUri(MODEL_URL);
+      await faceapi.nets.faceLandmark68Net.loadFromUri(MODEL_URL);
+      await faceapi.nets.faceExpressionNet.loadFromUri(MODEL_URL);
     }
 
     loadModels();
 
-    // Capture the photo
-    captureBtn.addEventListener('click', async () => {
+    // Capture button event
+    captureBtn.addEventListener("click", async () => {
       const videoWidth = video.videoWidth;
       const videoHeight = video.videoHeight;
+
+      // Set canvas size to video size
       canvas.width = videoWidth;
       canvas.height = videoHeight;
 
+      // Draw video frame to canvas
       context.drawImage(video, 0, 0, videoWidth, videoHeight);
 
+      // Detect faces and expressions
       const detections = await faceapi.detectAllFaces(canvas).withFaceExpressions();
       if (detections.length > 0) {
         const expressions = detections[0].expressions;
@@ -305,6 +306,8 @@
         }
 
         quoteBox.textContent = quotes[mood] || quotes.default;
+      } else {
+        quoteBox.textContent = "No face detected. Try again!";
       }
     });
 
