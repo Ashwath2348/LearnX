@@ -4,79 +4,111 @@
   <meta charset="UTF-8">
   <title>E-Learn Quest</title>
   <style>
+    :root {
+      --primary-green: #00a86b;
+      --secondary-green: #007f5f;
+      --light-green-bg: #e6f5ef;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      background: #000;
-      color: limegreen;
       margin: 0;
-      padding: 20px;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: white;
+      color: #222;
+    }
+
+    header {
+      background: linear-gradient(to right, var(--secondary-green), var(--primary-green));
+      color: white;
+      padding: 40px 20px;
       text-align: center;
+      border-bottom-left-radius: 40px;
+      border-bottom-right-radius: 40px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 36px;
+    }
+
+    header p {
+      font-size: 18px;
+      margin-top: 10px;
     }
 
     .button-container {
-      margin: 20px 0;
+      text-align: center;
+      margin-top: 20px;
     }
 
     .button-container button {
-      background-color: transparent;
-      color: limegreen;
-      border: 1px solid limegreen;
+      background-color: white;
+      color: var(--primary-green);
+      border: 2px solid var(--primary-green);
       padding: 10px 20px;
-      margin: 0 10px;
-      border-radius: 5px;
+      margin: 10px;
+      border-radius: 30px;
       cursor: pointer;
       font-size: 16px;
+      transition: all 0.3s ease;
     }
 
     .button-container button:hover {
-      background-color: limegreen;
-      color: black;
+      background-color: var(--primary-green);
+      color: white;
     }
 
     .content-section {
       display: none;
-      margin-top: 30px;
-      padding: 20px;
-      background-color: #111;
-      border-radius: 15px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
-    }
-
-    h1 {
-      color: limegreen;
+      margin: 30px auto;
+      padding: 30px;
+      width: 90%;
+      max-width: 700px;
+      background-color: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
 
     h2 {
-      color: limegreen;
+      color: var(--secondary-green);
     }
 
     input[type="text"] {
-      padding: 8px;
-      border: none;
-      border-radius: 4px;
-      margin-bottom: 10px;
-      width: 200px;
+      padding: 10px;
+      width: 60%;
+      max-width: 300px;
+      margin: 10px 5px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 14px;
     }
 
-    button {
-      padding: 8px 15px;
-      margin-left: 10px;
+    .content-section button {
+      padding: 10px 20px;
+      border-radius: 8px;
+      background-color: var(--secondary-green);
+      color: white;
       border: none;
-      border-radius: 4px;
-      background-color: limegreen;
-      color: black;
       cursor: pointer;
     }
 
-    button:hover {
-      background-color: #aaffaa;
+    .content-section button:hover {
+      background-color: var(--primary-green);
+    }
+
+    .output {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #333;
     }
   </style>
 </head>
 <body>
 
-  <h1>E-Learn Quest</h1>
-  <p>Gamify your learning. Earn points. Unlock levels. Master skills.</p>
+  <header>
+    <h1>E-Learn Quest</h1>
+    <p>Gamify your learning. Earn points. Unlock levels. Master skills.</p>
+  </header>
 
   <div class="button-container">
     <button onclick="openSection('logic')">Only Logic Input</button>
@@ -89,8 +121,9 @@
     <h2>Logic Questions</h2>
 
     <p>Print even numbers from 1 to 10 using a loop.</p>
-    <input type="text" placeholder="Enter keyword logic...">
-    <button>Submit</button>
+    <input type="text" id="input1" placeholder="Enter keyword logic...">
+    <button onclick="solveQuestion1()">Submit</button>
+    <div id="output1" class="output"></div>
 
     <p>Check if a number is positive or negative.</p>
     <input type="text" placeholder="Enter keyword logic...">
@@ -123,6 +156,14 @@
     function openSection(sectionId) {
       document.querySelectorAll('.content-section').forEach(el => el.style.display = 'none');
       document.getElementById(sectionId).style.display = 'block';
+    }
+
+    function solveQuestion1() {
+      const result = [];
+      for (let i = 2; i <= 8; i += 2) {
+        result.push(i);
+      }
+      document.getElementById("output1").innerText = "Output: " + result.join(", ");
     }
   </script>
 
