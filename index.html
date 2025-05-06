@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>LearnX Learning Platform</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <script defer src="https://cdn.jsdelivr.net/npm/face-api.js"></script>
   <style>
     * {
       box-sizing: border-box;
@@ -191,6 +192,7 @@
     <h1>Hey there! 🌟</h1>
     <p>Before we dive in, how are you feeling today?</p>
     <video id="webcam" autoplay playsinline></video>
+    <button id="captureBtn">Capture Photo</button>
     <div class="mood-form">
       <input type="text" id="moodInput" placeholder="e.g. happy, tired, sad" />
       <button onclick="showMotivation()">Inspire Me</button>
@@ -243,15 +245,10 @@
 
   <script>
     const video = document.getElementById("webcam");
-
-    navigator.mediaDevices.getUserMedia({ video: true })
-      .then(stream => {
-        video.srcObject = stream;
-      })
-      .catch(err => {
-        alert("Please allow webcam access to proceed.");
-        console.error("Webcam error:", err);
-      });
+    const captureBtn = document.getElementById("captureBtn");
+    const quoteBox = document.getElementById("quote-box");
+    const canvas = document.createElement('canvas');
+    const context = canvas.getContext('2d');
 
     const quotes = {
       happy: "That's great! Keep the energy going! 😊",
@@ -262,10 +259,58 @@
       default: "Whatever your mood — you're stronger than you know 💪"
     };
 
+    // Webcam setup
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(stream => {
+        video.srcObject = stream;
+      })
+      .catch(err => {
+        alert("Please allow webcam access to proceed.");
+        console.error("Webcam error:", err);
+      });
+
+    // Load face-api models
+    async function loadModels() {
+      const MODEL_URL = 'https://cdn.jsdelivr.net/npm/face-api.js/models';
+      await Promise.all([
+        faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL),
+        faceapi.nets.faceExpressionNet.loadFromUri(MODEL_URL),
+        faceapi.nets.ssdMobilenetv1.loadFromUri(MODEL_URL)
+      ]);
+      console.log("Models loaded successfully");
+    }
+
+    loadModels();
+
+    // Capture the photo
+    captureBtn.addEventListener('click', async () => {
+      const videoWidth = video.videoWidth;
+      const videoHeight = video.videoHeight;
+      canvas.width = videoWidth;
+      canvas.height = videoHeight;
+      context.drawImage(video, 0, 0, videoWidth, videoHeight);
+
+      const detections = await faceapi.detectAllFaces(canvas).withFaceExpressions();
+      if (detections.length > 0) {
+        const expressions = detections[0].expressions;
+        let mood = 'default';
+        let maxExpression = 0;
+
+        for (let [key, value] of Object.entries(expressions)) {
+          if (value > maxExpression) {
+            maxExpression = value;
+            mood = key;
+          }
+        }
+
+        quoteBox.textContent = quotes[mood] || quotes.default;
+      }
+    });
+
     function showMotivation() {
       const mood = document.getElementById("moodInput").value.toLowerCase().trim();
       const message = quotes[mood] || quotes["default"];
-      document.getElementById("quote-box").textContent = message;
+      quoteBox.textContent = message;
 
       setTimeout(() => {
         document.getElementById("introScreen").style.display = "none";
