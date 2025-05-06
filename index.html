@@ -3,127 +3,71 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>LearnX - Empower Your Learning</title>
+  <title>LearnX</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #f9f9f9;
     }
     header {
-      background: #fff;
-      padding: 15px 30px;
+      background-color: #fff;
+      padding: 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
     .logo {
-      font-size: 24px;
+      color: #00b37f;
       font-weight: bold;
-      color: #0b8457;
+      font-size: 24px;
     }
     nav a {
-      margin-left: 20px;
+      margin: 0 15px;
       text-decoration: none;
       color: #333;
-      font-weight: 500;
-    }
-    nav a:hover {
-      color: #0b8457;
+      font-weight: bold;
     }
     .hero {
-      background: #0b8457;
+      background-color: #009d65;
       color: white;
       text-align: center;
-      padding: 80px 20px 60px;
-      border-bottom-left-radius: 50px;
-      border-bottom-right-radius: 50px;
+      padding: 60px 20px;
+      border-bottom-left-radius: 40px;
+      border-bottom-right-radius: 40px;
     }
-    .hero h1 {
-      font-size: 36px;
-      margin-bottom: 10px;
-    }
-    .hero p {
-      font-size: 18px;
-      margin-bottom: 30px;
-    }
-    .search-box {
-      display: flex;
-      justify-content: center;
-      max-width: 500px;
-      margin: 0 auto;
-      flex-wrap: wrap;
-    }
-    .search-box input {
+    .hero input {
       padding: 10px;
-      font-size: 16px;
-      width: 70%;
+      width: 300px;
+      max-width: 90%;
+      border-radius: 10px;
       border: none;
-      border-radius: 4px 0 0 4px;
-      outline: none;
+      margin-top: 20px;
     }
-    .search-box button {
+    .hero button {
       padding: 10px 20px;
-      font-size: 16px;
-      background: white;
-      color: #0b8457;
-      border: 2px solid white;
-      border-radius: 0 4px 4px 0;
-      cursor: pointer;
+      border: none;
+      border-radius: 10px;
+      background-color: white;
+      color: #009d65;
       font-weight: bold;
+      margin-left: 10px;
     }
     .features {
       display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin: 50px 20px;
+      justify-content: space-around;
+      padding: 40px 20px;
+      background-color: #f9f9f9;
     }
-    .feature-box {
-      background: white;
-      padding: 25px;
-      margin: 15px;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-      width: 280px;
-      text-align: center;
+    .feature {
+      max-width: 300px;
     }
-    .feature-box h3 {
-      color: #0b8457;
-      margin-bottom: 10px;
-    }
-    .feature-box p {
-      color: #555;
-    }
-    @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 28px;
-      }
-      .hero p {
-        font-size: 16px;
-      }
-      .search-box input {
-        width: 100%;
-        border-radius: 4px;
-        margin-bottom: 10px;
-      }
-      .search-box button {
-        border-radius: 4px;
-        width: 100%;
-      }
-      nav a {
-        margin-left: 10px;
-        font-size: 14px;
-      }
+    .feature h3 {
+      color: #009d65;
     }
   </style>
 </head>
 <body>
-
-  <!-- Header -->
   <header>
     <div class="logo">LearnX</div>
     <nav>
@@ -133,27 +77,22 @@
     </nav>
   </header>
 
-  <!-- Hero Section -->
   <section class="hero">
     <h1>Empower Your Learning</h1>
     <p>Master coding with AI guidance and hands-on practice.</p>
-    <div class="search-box">
-      <input type="text" placeholder="Search tutorials, e.g. HTML">
-      <button>Search</button>
-    </div>
+    <input type="text" placeholder="Search tutorials, e.g. HTML" />
+    <button>Search</button>
   </section>
 
-  <!-- Features -->
   <section class="features">
-    <div class="feature-box">
+    <div class="feature">
+      <h3>Interactive Lessons</h3>
+      <p>Learn with examples, code challenges, and real-time feedback.</p>
+    </div>
+    <div class="feature">
       <h3>Quizzes & Exams</h3>
       <p>Test your knowledge and track your progress as you grow.</p>
     </div>
-    <div class="feature-box">
-      <h3>AI Tutor</h3>
-      <p>Get help instantly with a smart assistant that explains concepts clearly.</p>
-    </div>
   </section>
-
 </body>
 </html>
