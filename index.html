@@ -1,152 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LearnX Learning Platform</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LearnX - Empower Your Learning</title>
   <style>
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Inter', sans-serif;
     }
     body {
-      background-color: #f5f7fb;
-      color: #333;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
     }
     header {
-      background: #ffffff;
+      background: #fff;
+      padding: 15px 30px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 16px 40px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
-    header h1 {
-      font-size: 1.8rem;
-      color: #04aa6d;
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #0b8457;
     }
     nav a {
-      margin: 0 15px;
+      margin-left: 20px;
       text-decoration: none;
       color: #333;
-      font-weight: 600;
-      transition: color 0.2s ease;
+      font-weight: 500;
     }
     nav a:hover {
-      color: #04aa6d;
+      color: #0b8457;
     }
     .hero {
-      text-align: center;
-      padding: 120px 20px 80px;
-      background: linear-gradient(135deg, #04aa6d 0%, #028f5b 100%);
+      background: #0b8457;
       color: white;
-      border-bottom-left-radius: 60px;
-      border-bottom-right-radius: 60px;
+      text-align: center;
+      padding: 80px 20px 60px;
+      border-bottom-left-radius: 50px;
+      border-bottom-right-radius: 50px;
     }
     .hero h1 {
-      font-size: 3.5rem;
-      margin-bottom: 20px;
+      font-size: 36px;
+      margin-bottom: 10px;
     }
     .hero p {
-      font-size: 1.3rem;
-      color: #e4fff4;
+      font-size: 18px;
+      margin-bottom: 30px;
     }
     .search-box {
-      margin: 40px auto;
       display: flex;
       justify-content: center;
-      max-width: 600px;
+      max-width: 500px;
+      margin: 0 auto;
+      flex-wrap: wrap;
     }
     .search-box input {
-      padding: 14px;
+      padding: 10px;
+      font-size: 16px;
       width: 70%;
       border: none;
-      border-radius: 10px 0 0 10px;
-      font-size: 1rem;
+      border-radius: 4px 0 0 4px;
+      outline: none;
     }
     .search-box button {
-      padding: 14px 24px;
-      background-color: #ffffff;
-      color: #04aa6d;
-      font-weight: bold;
-      border: none;
-      border-radius: 0 10px 10px 0;
-      font-size: 1rem;
+      padding: 10px 20px;
+      font-size: 16px;
+      background: white;
+      color: #0b8457;
+      border: 2px solid white;
+      border-radius: 0 4px 4px 0;
       cursor: pointer;
+      font-weight: bold;
     }
     .features {
-      padding: 60px 20px;
       display: flex;
-      flex-wrap: wrap;
       justify-content: center;
-      gap: 30px;
-      background-color: #ffffff;
+      flex-wrap: wrap;
+      margin: 50px 20px;
     }
-    .feature-card {
-      background: #f8f9fc;
-      border-radius: 16px;
-      padding: 30px;
+    .feature-box {
+      background: white;
+      padding: 25px;
+      margin: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
       width: 280px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-      transition: transform 0.2s;
+      text-align: center;
     }
-    .feature-card:hover {
-      transform: translateY(-8px);
-    }
-    .feature-card h3 {
-      font-size: 1.2rem;
+    .feature-box h3 {
+      color: #0b8457;
       margin-bottom: 10px;
-      color: #04aa6d;
     }
-    .feature-card p {
-      font-size: 0.95rem;
+    .feature-box p {
       color: #555;
     }
-    .login-link {
-      text-align: center;
-      margin: 60px 0;
-    }
-    .login-link a {
-      font-size: 1.1rem;
-      color: #04aa6d;
-      font-weight: bold;
-      text-decoration: none;
-      border: 2px solid #04aa6d;
-      padding: 12px 24px;
-      border-radius: 8px;
-      transition: background-color 0.3s, color 0.3s;
-    }
-    .login-link a:hover {
-      background-color: #04aa6d;
-      color: #fff;
-    }
-    footer {
-      text-align: center;
-      padding: 40px;
-      background-color: #e6f4ef;
-      color: #333;
-      margin-top: 60px;
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 28px;
+      }
+      .hero p {
+        font-size: 16px;
+      }
+      .search-box input {
+        width: 100%;
+        border-radius: 4px;
+        margin-bottom: 10px;
+      }
+      .search-box button {
+        border-radius: 4px;
+        width: 100%;
+      }
+      nav a {
+        margin-left: 10px;
+        font-size: 14px;
+      }
     }
   </style>
 </head>
 <body>
+
+  <!-- Header -->
   <header>
-    <h1>LearnX</h1>
+    <div class="logo">LearnX</div>
     <nav>
-      <a href="#">Courses</a>
       <a href="#">Quizzes</a>
-      <a href="#">Certificates</a>
       <a href="#">AI Tutor</a>
-      <a href="login.html">Login</a>
+      <a href="#">Login</a>
     </nav>
   </header>
 
+  <!-- Hero Section -->
   <section class="hero">
     <h1>Empower Your Learning</h1>
     <p>Master coding with AI guidance and hands-on practice.</p>
@@ -156,31 +143,17 @@
     </div>
   </section>
 
+  <!-- Features -->
   <section class="features">
-    <div class="feature-card">
-      <h3>Interactive Lessons</h3>
-      <p>Learn with examples, code challenges, and real-time feedback.</p>
-    </div>
-    <div class="feature-card">
+    <div class="feature-box">
       <h3>Quizzes & Exams</h3>
       <p>Test your knowledge and track your progress as you grow.</p>
     </div>
-    <div class="feature-card">
+    <div class="feature-box">
       <h3>AI Tutor</h3>
       <p>Get help instantly with a smart assistant that explains concepts clearly.</p>
     </div>
-    <div class="feature-card">
-      <h3>Certificates</h3>
-      <p>Earn certificates to showcase your achievements and skills.</p>
-    </div>
   </section>
 
-  <section class="login-link">
-    <a href="login.html">Go to Login Page</a>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 LearnX. All rights reserved.</p>
-  </footer>
 </body>
 </html>
