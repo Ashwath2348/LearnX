@@ -76,7 +76,8 @@ video {
   border-radius: 12px;
   width: 320px;
   height: 240px;
-  object-fit: cover;
+  object-fit: contain; /* Ensures the entire image is shown within the box */
+  display: none; /* Initially hidden, shown after capture */
 }
 
 /* Main site hidden initially */
