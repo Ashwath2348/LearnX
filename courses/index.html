@@ -120,22 +120,29 @@
   <div id="logic" class="content-section">
     <h2>Logic Questions</h2>
 
+    <!-- Question 1 -->
     <p>Print even numbers from 1 to 10 using a loop.</p>
     <input type="text" id="input1" placeholder="Enter keyword logic...">
     <button onclick="solveQuestion1()">Submit</button>
     <div id="output1" class="output"></div>
 
+    <!-- Question 2 -->
     <p>Check if a number is positive or negative.</p>
-    <input type="text" placeholder="Enter keyword logic...">
-    <button>Submit</button>
+    <input type="text" id="input2" placeholder="Enter number...">
+    <button onclick="solveQuestion2()">Submit</button>
+    <div id="output2" class="output"></div>
 
+    <!-- Question 3 -->
     <p>Store names in order using linear structure.</p>
-    <input type="text" placeholder="Enter keyword logic...">
-    <button>Submit</button>
+    <input type="text" id="input3" placeholder="Enter comma-separated names...">
+    <button onclick="solveQuestion3()">Submit</button>
+    <div id="output3" class="output"></div>
 
+    <!-- Question 4 -->
     <p>Reverse a string using a data structure.</p>
-    <input type="text" placeholder="Enter keyword logic...">
-    <button>Submit</button>
+    <input type="text" id="input4" placeholder="Enter a string...">
+    <button onclick="solveQuestion4()">Submit</button>
+    <div id="output4" class="output"></div>
   </div>
 
   <!-- Audio Section -->
@@ -164,6 +171,36 @@
         result.push(i);
       }
       document.getElementById("output1").innerText = "Output: " + result.join(", ");
+    }
+
+    function solveQuestion2() {
+      const input = document.getElementById("input2").value;
+      const num = parseFloat(input);
+      let output = "";
+
+      if (isNaN(num)) {
+        output = "Please enter a valid number.";
+      } else if (num > 0) {
+        output = "Output: Positive";
+      } else if (num < 0) {
+        output = "Output: Negative";
+      } else {
+        output = "Output: Zero";
+      }
+
+      document.getElementById("output2").innerText = output;
+    }
+
+    function solveQuestion3() {
+      const input = document.getElementById("input3").value;
+      const names = input.split(",").map(name => name.trim());
+      document.getElementById("output3").innerText = "Stored in order: " + names.join(" → ");
+    }
+
+    function solveQuestion4() {
+      const input = document.getElementById("input4").value;
+      const reversed = input.split("").reverse().join("");
+      document.getElementById("output4").innerText = "Reversed String: " + reversed;
     }
   </script>
 
