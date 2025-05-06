@@ -79,6 +79,14 @@
     .login-link a:hover {
       text-decoration: underline;
     }
+
+    .error-message {
+      color: red;
+      font-size: 0.85rem;
+      margin-top: -12px;
+      margin-bottom: 12px;
+      display: none;
+    }
   </style>
 </head>
 <body>
@@ -87,10 +95,12 @@
     <h2>Create Account</h2>
     <p>Sign up to start learning with LearnX</p>
 
-    <form onsubmit="event.preventDefault(); alert('Account created!');">
+    <form onsubmit="return validatePasswords();">
       <input type="text" placeholder="Full Name" required />
       <input type="email" placeholder="Email" required />
-      <input type="password" placeholder="Password" required />
+      <input type="password" id="password" placeholder="Password" required />
+      <input type="password" id="confirmPassword" placeholder="Confirm Password" required />
+      <div class="error-message" id="errorMessage">Passwords do not match.</div>
       <button type="submit">Create Account</button>
     </form>
 
@@ -98,6 +108,22 @@
       Already have an account? <a href="login.html">Log in</a>
     </div>
   </div>
+
+  <script>
+    function validatePasswords() {
+      const password = document.getElementById('password').value;
+      const confirm = document.getElementById('confirmPassword').value;
+      const errorMessage = document.getElementById('errorMessage');
+      if (password !== confirm) {
+        errorMessage.style.display = 'block';
+        return false;
+      } else {
+        errorMessage.style.display = 'none';
+        alert('Account created!');
+        return true;
+      }
+    }
+  </script>
 
 </body>
 </html>
