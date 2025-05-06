@@ -8,12 +8,13 @@
       --primary-green: #00a86b;
       --secondary-green: #007f5f;
       --light-green-bg: #e6f5ef;
+      --white: #ffffff;
     }
 
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background-color: white;
+      background-color: var(--light-green-bg);
       color: #222;
     }
 
@@ -42,7 +43,7 @@
     }
 
     .button-container button {
-      background-color: white;
+      background-color: var(--white);
       color: var(--primary-green);
       border: 2px solid var(--primary-green);
       padding: 10px 20px;
@@ -55,7 +56,7 @@
 
     .button-container button:hover {
       background-color: var(--primary-green);
-      color: white;
+      color: var(--white);
     }
 
     .content-section {
@@ -64,7 +65,7 @@
       padding: 30px;
       width: 90%;
       max-width: 700px;
-      background-color: #ffffff;
+      background-color: var(--white);
       border-radius: 20px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
@@ -120,61 +121,56 @@
   <div id="logic" class="content-section">
     <h2>Logic Questions</h2>
 
-    <!-- Question 1 -->
     <p>Print even numbers from 1 to 10 using a loop.</p>
     <input type="text" id="input1" placeholder="Enter keyword logic...">
     <button onclick="solveQuestion1()">Submit</button>
     <div id="output1" class="output"></div>
 
-    <!-- Question 2 -->
     <p>Check if a number is positive or negative.</p>
     <input type="text" id="input2" placeholder="Enter number...">
     <button onclick="solveQuestion2()">Submit</button>
     <div id="output2" class="output"></div>
 
-    <!-- Question 3 -->
     <p>Store names in order using linear structure.</p>
     <input type="text" id="input3" placeholder="Enter comma-separated names...">
     <button onclick="solveQuestion3()">Submit</button>
     <div id="output3" class="output"></div>
 
-    <!-- Question 4 -->
     <p>Reverse a string using a data structure.</p>
     <input type="text" id="input4" placeholder="Enter a string...">
     <button onclick="solveQuestion4()">Submit</button>
     <div id="output4" class="output"></div>
   </div>
 
- <!-- Audio Section -->
-<div id="audio" class="content-section">
-  <h2>Learn by Listening</h2>
+  <!-- Audio Section -->
+  <div id="audio" class="content-section">
+    <h2>Learn by Listening</h2>
 
-  <audio controls>
-    <source src="narrator friendly en.mp3" type="audio/mp3">
-    Your browser does not support the audio element.
-  </audio><br><br>
+    <audio controls>
+      <source src="narrator friendly en.mp3" type="audio/mp3">
+      Your browser does not support the audio element.
+    </audio><br><br>
 
-  <audio controls>
-    <source src="audio2.mp3" type="audio/mp3">
-    Your browser does not support the audio element.
-  </audio><br><br>
+    <audio controls>
+      <source src="audio2.mp3" type="audio/mp3">
+      Your browser does not support the audio element.
+    </audio><br><br>
 
-  <audio controls>
-    <source src="audio3.mp3" type="audio/mp3">
-    Your browser does not support the audio element.
-  </audio>
-</div>
+    <audio controls>
+      <source src="audio3.mp3" type="audio/mp3">
+      Your browser does not support the audio element.
+    </audio>
+  </div>
 
-<!-- Visual Learning Section -->
-<div id="visual" class="content-section">
-  <h2>Visual Learning</h2>
-  <p>Watch this visual tutorial to enhance your understanding:</p>
-  <video width="100%" height="auto" controls>
-    <source src="JAVAl.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-</div>
-
+  <!-- Visual Learning Section -->
+  <div id="visual" class="content-section">
+    <h2>Visual Learning</h2>
+    <p>Watch this visual tutorial to enhance your understanding:</p>
+    <video width="100%" height="auto" controls>
+      <source src="JAVAl.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
 
   <script>
     function openSection(sectionId) {
@@ -184,7 +180,7 @@
 
     function solveQuestion1() {
       const result = [];
-      for (let i = 2; i <= 8; i += 2) {
+      for (let i = 2; i <= 10; i += 2) {
         result.push(i);
       }
       document.getElementById("output1").innerText = "Output: " + result.join(", ");
