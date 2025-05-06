@@ -76,12 +76,20 @@
     <p>[Insert visual content here]</p>
   </div>
 
-  <script>
-    function openSection(sectionId) {
-      document.querySelectorAll('.content-section').forEach(el => el.style.display = 'none');
-      document.getElementById(sectionId).style.display = 'block';
+ <script>
+  function submitAnswer(event) {
+    event.preventDefault();
+    const input = event.target.querySelector('input[type="text"]').value.trim().toLowerCase();
+    const feedback = document.getElementById('feedback');
+
+    if (input.includes("stack") || input.includes("push") || input.includes("pop")) {
+      feedback.textContent = "✅ Correct! A stack is ideal for reversing.";
+    } else {
+      feedback.textContent = "❌ Try again. Hint: Think LIFO structure.";
     }
-  </script>
+  }
+</script>
+
 
 </body>
 </html>
