@@ -17,7 +17,6 @@
       color: #333;
     }
 
-    /* Webcam + Mood UI */
     .intro-screen {
       display: flex;
       flex-direction: column;
@@ -69,17 +68,18 @@
       color: #065;
       font-weight: bold;
     }
-   .captured-photo {
-  margin-top: 20px;
-  border: 2px solid #04aa6d;
-  border-radius: 12px;
-  width: 320px;
-  height: 240px;
-  object-fit: contain; /* Ensures the entire image is shown within the box */
-  display: none; /* Initially hidden, shown after capture */
-}
 
-    /* Main site hidden initially */
+    /* ✅ Updated for <img> display */
+    .captured-photo {
+      margin-top: 20px;
+      border: 2px solid #04aa6d;
+      border-radius: 12px;
+      width: 320px;
+      height: 240px;
+      object-fit: contain;
+      display: none;
+    }
+
     .main-content {
       display: none;
     }
@@ -211,7 +211,10 @@
     <video id="webcam" autoplay playsinline></video>
     <button class="capture-button" onclick="captureImage()">Capture Image</button>
     <canvas id="canvas" style="display: none;"></canvas>
-    <div class="captured-photo" id="capturedPhoto"></div>
+
+    <!-- ✅ Use <img> for displaying captured photo -->
+    <img class="captured-photo" id="capturedPhoto" alt="Captured photo"/>
+
     <div class="mood-form">
       <input type="text" id="moodInput" placeholder="e.g. happy, tired, sad" />
       <button onclick="showMotivation()">Analyze</button>
@@ -283,7 +286,7 @@
       context.drawImage(video, 0, 0, canvas.width, canvas.height);
 
       const imageUrl = canvas.toDataURL();
-      capturedPhoto.style.backgroundImage = `url(${imageUrl})`;
+      capturedPhoto.src = imageUrl;
       capturedPhoto.style.display = "block";
     }
 
@@ -304,7 +307,7 @@
       setTimeout(() => {
         document.getElementById("introScreen").style.display = "none";
         document.getElementById("mainContent").style.display = "block";
-      }, 3000); // show main site after 3 seconds
+      }, 3000); // Delay before showing main content
     }
   </script>
 
