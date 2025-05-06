@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SkillSprout - Learn to Code</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
@@ -13,38 +13,49 @@
       font-family: 'Inter', sans-serif;
     }
     body {
-      background-color: #1f1f28;
-      color: #fff;
+      background-color: #f5f7fb;
+      color: #333;
     }
     header {
-      background: #fff;
-      color: #000;
+      background: #ffffff;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 40px;
+      padding: 16px 40px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
     header h1 {
-      font-size: 1.5rem;
+      font-size: 1.8rem;
+      color: #04aa6d;
     }
     nav a {
-      margin: 0 10px;
+      margin: 0 15px;
       text-decoration: none;
-      color: #000;
-      font-weight: bold;
+      color: #333;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+    nav a:hover {
+      color: #04aa6d;
     }
     .hero {
       text-align: center;
-      padding: 100px 20px;
-      background-color: #1f1f28;
+      padding: 120px 20px 80px;
+      background: linear-gradient(135deg, #04aa6d 0%, #028f5b 100%);
+      color: white;
+      border-bottom-left-radius: 60px;
+      border-bottom-right-radius: 60px;
     }
     .hero h1 {
-      font-size: 3rem;
+      font-size: 3.5rem;
       margin-bottom: 20px;
     }
     .hero p {
-      font-size: 1.2rem;
-      color: #fffae3;
+      font-size: 1.3rem;
+      color: #e4fff4;
     }
     .search-box {
       margin: 40px auto;
@@ -53,41 +64,56 @@
       max-width: 600px;
     }
     .search-box input {
-      padding: 12px;
+      padding: 14px;
       width: 70%;
       border: none;
-      border-radius: 8px 0 0 8px;
+      border-radius: 10px 0 0 10px;
       font-size: 1rem;
     }
     .search-box button {
-      padding: 12px 20px;
-      background-color: #04aa6d;
-      color: white;
+      padding: 14px 24px;
+      background-color: #ffffff;
+      color: #04aa6d;
+      font-weight: bold;
       border: none;
-      border-radius: 0 8px 8px 0;
+      border-radius: 0 10px 10px 0;
       font-size: 1rem;
       cursor: pointer;
     }
-    .topics {
+    .features {
+      padding: 60px 20px;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      background-color: #e3f8ee;
-      padding: 40px;
+      gap: 30px;
+      background-color: #ffffff;
     }
-    .topic {
-      background: white;
-      color: #333;
-      margin: 10px;
-      padding: 20px;
-      border-radius: 10px;
-      width: 200px;
+    .feature-card {
+      background: #f8f9fc;
+      border-radius: 16px;
+      padding: 30px;
+      width: 280px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      transition: transform 0.2s;
+    }
+    .feature-card:hover {
+      transform: translateY(-8px);
+    }
+    .feature-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: #04aa6d;
+    }
+    .feature-card p {
+      font-size: 0.95rem;
+      color: #555;
+    }
+    footer {
       text-align: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    .topic:hover {
-      background-color: #04aa6d;
-      color: white;
+      padding: 40px;
+      background-color: #e6f4ef;
+      color: #333;
+      margin-top: 60px;
     }
   </style>
 </head>
@@ -98,28 +124,41 @@
       <a href="#">Courses</a>
       <a href="#">Quizzes</a>
       <a href="#">Certificates</a>
+      <a href="#">AI Tutor</a>
       <a href="#">Login</a>
     </nav>
   </header>
 
   <section class="hero">
-    <h1>Learn to Code</h1>
-    <p>With our interactive, AI-powered e-learning platform.</p>
+    <h1>Empower Your Learning</h1>
+    <p>Master coding with AI guidance and hands-on practice.</p>
     <div class="search-box">
-      <input type="text" placeholder="Search our tutorials, e.g. HTML">
+      <input type="text" placeholder="Search tutorials, e.g. HTML">
       <button>Search</button>
     </div>
   </section>
 
-  <section class="topics">
-    <div class="topic">HTML</div>
-    <div class="topic">CSS</div>
-    <div class="topic">JavaScript</div>
-    <div class="topic">Python</div>
-    <div class="topic">React</div>
-    <div class="topic">SQL</div>
-    <div class="topic">PHP</div>
-    <div class="topic">Java</div>
+  <section class="features">
+    <div class="feature-card">
+      <h3>Interactive Lessons</h3>
+      <p>Learn with examples, code challenges, and real-time feedback.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Quizzes & Exams</h3>
+      <p>Test your knowledge and track your progress as you grow.</p>
+    </div>
+    <div class="feature-card">
+      <h3>AI Tutor</h3>
+      <p>Get help instantly with a smart assistant that explains concepts clearly.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Certificates</h3>
+      <p>Earn certificates to showcase your achievements and skills.</p>
+    </div>
   </section>
+
+  <footer>
+    <p>&copy; 2025 SkillSprout. All rights reserved.</p>
+  </footer>
 </body>
 </html>
