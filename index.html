@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LearnX - E Learning Platform</title>
+  <title>LearnX Learning Platform</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     * {
@@ -108,6 +108,42 @@
       font-size: 0.95rem;
       color: #555;
     }
+    .login-form {
+      max-width: 400px;
+      margin: 60px auto;
+      padding: 40px;
+      background-color: #ffffff;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      border-radius: 16px;
+    }
+    .login-form h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #04aa6d;
+    }
+    .login-form label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    .login-form input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    .login-form button {
+      width: 100%;
+      padding: 14px;
+      background-color: #04aa6d;
+      color: white;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+    }
     footer {
       text-align: center;
       padding: 40px;
@@ -125,7 +161,7 @@
       <a href="#">Quizzes</a>
       <a href="#">Certificates</a>
       <a href="#">AI Tutor</a>
-      <a href="#">Login</a>
+      <a href="#login">Login</a>
     </nav>
   </header>
 
@@ -157,8 +193,19 @@
     </div>
   </section>
 
+  <section id="login" class="login-form">
+    <h2>Login to Your Account</h2>
+    <form>
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="Enter your email" required>
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Enter your password" required>
+      <button type="submit">Login</button>
+    </form>
+  </section>
+
   <footer>
-    <p>&copy; 2025 SkillSprout. All rights reserved.</p>
+    <p>&copy; 2025 LearnX. All rights reserved.</p>
   </footer>
 </body>
 </html>
