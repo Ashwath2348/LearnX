@@ -288,6 +288,7 @@
       const videoHeight = video.videoHeight;
       canvas.width = videoWidth;
       canvas.height = videoHeight;
+
       context.drawImage(video, 0, 0, videoWidth, videoHeight);
 
       const detections = await faceapi.detectAllFaces(canvas).withFaceExpressions();
