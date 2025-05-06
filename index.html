@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkillSprout - Learn to Code</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+    body {
+      background-color: #1f1f28;
+      color: #fff;
+    }
+    header {
+      background: #fff;
+      color: #000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 40px;
+    }
+    header h1 {
+      font-size: 1.5rem;
+    }
+    nav a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #000;
+      font-weight: bold;
+    }
+    .hero {
+      text-align: center;
+      padding: 100px 20px;
+      background-color: #1f1f28;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      color: #fffae3;
+    }
+    .search-box {
+      margin: 40px auto;
+      display: flex;
+      justify-content: center;
+      max-width: 600px;
+    }
+    .search-box input {
+      padding: 12px;
+      width: 70%;
+      border: none;
+      border-radius: 8px 0 0 8px;
+      font-size: 1rem;
+    }
+    .search-box button {
+      padding: 12px 20px;
+      background-color: #04aa6d;
+      color: white;
+      border: none;
+      border-radius: 0 8px 8px 0;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .topics {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      background-color: #e3f8ee;
+      padding: 40px;
+    }
+    .topic {
+      background: white;
+      color: #333;
+      margin: 10px;
+      padding: 20px;
+      border-radius: 10px;
+      width: 200px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .topic:hover {
+      background-color: #04aa6d;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>SkillSprout</h1>
+    <nav>
+      <a href="#">Courses</a>
+      <a href="#">Quizzes</a>
+      <a href="#">Certificates</a>
+      <a href="#">Login</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Learn to Code</h1>
+    <p>With our interactive, AI-powered e-learning platform.</p>
+    <div class="search-box">
+      <input type="text" placeholder="Search our tutorials, e.g. HTML">
+      <button>Search</button>
+    </div>
+  </section>
+
+  <section class="topics">
+    <div class="topic">HTML</div>
+    <div class="topic">CSS</div>
+    <div class="topic">JavaScript</div>
+    <div class="topic">Python</div>
+    <div class="topic">React</div>
+    <div class="topic">SQL</div>
+    <div class="topic">PHP</div>
+    <div class="topic">Java</div>
+  </section>
+</body>
+</html>
