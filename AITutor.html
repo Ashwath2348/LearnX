@@ -1,32 +1,39 @@
- <!-- AI Tutor Section -->
-  <section id="ai-tutor-section">
-    <div class="ai-container">
-      <aside class="ai-sidebar">
-        <h2>AI Tutor</h2>
-        <ul>
-          <li><strong>➕</strong> New Course</li>
-          <li>📚 My Courses</li>
-          <li>🌟 Staff Picks</li>
-          <li>💬 Community</li>
-        </ul>
-        <div class="ai-upgrade">
-          <strong>⚡ Upgrade</strong>
-          <p style="font-size: 0.9rem;">Get access to all features and benefits of the AI Tutor.</p>
-        </div>
-      </aside>
-      <div class="ai-main">
-        <h2>What can I help you learn?</h2>
-        <p>Enter a topic below to generate a personalized course for it</p>
-        <div class="ai-controls">
-          <input type="text" placeholder="e.g. JavaScript Promises, React Hooks">
-          <select>
-            <option>Beginner</option>
-            <option>Intermediate</option>
-            <option>Advanced</option>
-          </select>
-          <label><input type="checkbox"> Explain more for a better course</label>
-          <button>Generate Course</button>
-        </div>
+<!-- AI Tutor Section -->
+<section id="ai-tutor-section">
+  <div class="ai-container">
+    <aside class="ai-sidebar">
+      <h2>AI Tutor</h2>
+      <ul>
+        <li><strong>➕</strong> <a href="#">New Course</a></li>
+        <li>📚 <a href="#">My Courses</a></li>
+        <li>🌟 <a href="#">Staff Picks</a></li>
+        <li>💬 <a href="#">Community</a></li>
+      </ul>
+      <div class="ai-upgrade">
+        <strong>⚡ Upgrade</strong>
+        <p>Unlock premium features and personalized AI mentoring.</p>
+        <button style="margin-top: 10px; padding: 10px 20px; background-color: #04aa6d; color: white; border: none; border-radius: 6px; cursor: pointer;">Upgrade Now</button>
+      </div>
+    </aside>
+    <div class="ai-main">
+      <h2 style="font-size: 2rem; margin-bottom: 10px;">What can I help you learn?</h2>
+      <p style="color: #666; margin-bottom: 30px;">Generate a fully personalized course on any topic with AI guidance.</p>
+      <form class="ai-controls" onsubmit="event.preventDefault(); alert('Course generation in progress...');">
+        <input type="text" placeholder="e.g. JavaScript Promises, React Hooks" required style="flex: 1; min-width: 220px;">
+        <select style="min-width: 140px;">
+          <option>Beginner</option>
+          <option>Intermediate</option>
+          <option>Advanced</option>
+        </select>
+        <label style="display: flex; align-items: center; gap: 6px;">
+          <input type="checkbox"> Explain in detail
+        </label>
+        <button type="submit">Generate Course</button>
+      </form>
+      <div style="margin-top: 30px;">
+        <h3 style="margin-bottom: 10px;">💡 Tip:</h3>
+        <p style="font-size: 0.95rem; color: #777;">You can generate lessons for any topic, like "Neural Networks in Python" or "CSS Flexbox Basics".</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
