@@ -6,115 +6,79 @@
   <style>
     body {
       font-family: Arial, sans-serif;
+      background: #e3f5ff;
       margin: 0;
-      padding: 0;
-      background-color: #e6f5ff;
-    }
-
-    .header {
+      padding: 20px;
       text-align: center;
-      padding: 40px;
     }
 
-    .header h1 {
-      font-size: 40px;
-      margin: 10px 0;
+    .button-container {
+      margin: 20px 0;
     }
 
-    .header p {
-      font-size: 18px;
-      color: #333;
-    }
-
-    .buttons {
-      text-align: center;
-      margin-top: 20px;
-    }
-
-    .buttons button {
-      background-color: #33aaf0;
-      border: none;
+    .button-container button {
+      background-color: #48b6f0;
       color: white;
-      padding: 14px 25px;
-      font-size: 16px;
-      margin: 10px;
-      border-radius: 30px;
-      cursor: pointer;
-    }
-
-    .content {
-      background-color: white;
-      padding: 40px;
-      text-align: center;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-
-    .content h2 {
-      color: #0077cc;
-      margin-bottom: 30px;
-    }
-
-    .question {
-      font-size: 18px;
-      margin: 10px 0 20px 0;
-      color: #000;
-    }
-
-    .input-group {
-      margin: 10px auto;
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-    }
-
-    input[type="text"] {
-      padding: 10px;
-      font-size: 16px;
-      width: 250px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-
-    input[type="submit"] {
+      border: none;
       padding: 10px 20px;
-      font-size: 16px;
-      background-color: #33aaf0;
-      color: white;
-      border: none;
-      border-radius: 5px;
+      margin: 0 10px;
+      border-radius: 20px;
       cursor: pointer;
+      font-size: 16px;
     }
 
-    input[type="submit"]:hover {
-      background-color: #2597db;
+    .content-section {
+      display: none;
+      margin-top: 30px;
+      padding: 20px;
+      background-color: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #0077cc;
     }
   </style>
 </head>
 <body>
 
-  <div class="header">
-    <h1>E-Learn Quest</h1>
-    <p>Gamify your learning. Earn points. Unlock levels. Master skills.</p>
+  <h1>E-Learn Quest</h1>
+  <p>Gamify your learning. Earn points. Unlock levels. Master skills.</p>
 
-    <div class="buttons">
-      <button>Only Logic Input</button>
-      <button>Audiobooks</button>
-      <button>Visual Learning</button>
-    </div>
+  <div class="button-container">
+    <button onclick="openSection('logic')">Only Logic Input</button>
+    <button onclick="openSection('audio')">Audiobooks</button>
+    <button onclick="openSection('visual')">Visual Learning</button>
   </div>
 
-  <div class="content">
+  <!-- Content sections -->
+  <div id="logic" class="content-section">
     <h2>Logic Questions</h2>
-    <div class="question">
-      Reverse a string using a data structure.
-    </div>
-    <form>
-      <div class="input-group">
-        <input type="text" placeholder="Enter keyword logic...">
-        <input type="submit" value="Submit">
-      </div>
-    </form>
+    <p>Question 1: Placeholder</p>
+    <p>Question 2: Placeholder</p>
+    <p>Question 3: Placeholder</p>
   </div>
+
+  <div id="audio" class="content-section">
+    <h2>Learn by Listening</h2>
+    <audio controls><source src="audio1.mp3" type="audio/mp3"></audio>
+    <audio controls><source src="audio2.mp3" type="audio/mp3"></audio>
+    <audio controls><source src="audio3.mp3" type="audio/mp3"></audio>
+  </div>
+
+  <div id="visual" class="content-section">
+    <h2>Visual Learning</h2>
+    <p>[Insert visual content here]</p>
+  </div>
+
+  <script>
+    function openSection(sectionId) {
+      document.querySelectorAll('.content-section').forEach(el => el.style.display = 'none');
+      document.getElementById(sectionId).style.display = 'block';
+    }
+  </script>
 
 </body>
+</html>
 </html>
