@@ -1,1 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>C# Tutorial</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+      background-color: #e8f5e9; /* Light green background */
+    }
+
+    .sidebar {
+      width: 250px;
+      background-color: #ffffff; /* White sidebar */
+      padding: 20px;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+      overflow-y: auto;
+    }
+
+    .sidebar h2 {
+      font-size: 20px;
+      margin-top: 0;
+      color: #388e3c; /* Dark green */
+    }
+
+    .sidebar ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .sidebar ul li {
+      margin: 10px 0;
+    }
+
+    .sidebar ul li a {
+      text-decoration: none;
+      color: #2e7d32; /* Medium green */
+      display: block;
+      padding: 8px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .sidebar ul li a:hover {
+      background-color: #a5d6a7; /* Light green hover */
+      color: #1b5e20; /* Darker text */
+    }
+
+    .main-content {
+      flex-grow: 1;
+      padding: 20px;
+      overflow-y: auto;
+      background-color: #f1f8e9; /* Light green content area */
+    }
+
+    pre {
+      background: #e0f2f1; /* Slightly teal-green */
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .quiz-section {
+      margin-top: 30px;
+    }
+
+    .quiz-question {
+      margin-bottom: 20px;
+    }
+
+    .quiz-question label {
+      display: block;
+    }
+
+    .btn {
+      margin-top: 10px;
+      background-color: #43a047; /* Green button */
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #2e7d32; /* Darker green on hover */
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sidebar">
+    <h2>C# Tutorial</h2>
+    <ul>
+      <li><a onclick="loadContent('intro')">C# Intro</a></li>
+      <li><a onclick="loadContent('syntax')">C# Syntax</a></li>
+      <li><a onclick="loadContent('variables')">C# Variables</a></li>
+      <li><a onclick="loadContent('datatypes')">C# Data Types</a></li>
+      <li><a onclick="loadContent('operators')">C# Operators</a></li>
+      <li><a onclick="loadContent('examples')">Examples</a></li>
+      <li><a onclick="loadContent('quiz')">Quiz</a></li>
+    </ul>
+  </div>
+
+  <div class="main-content" id="content">
+    <h2>Welcome to C# Tutorial</h2>
+    <p>Select a topic from the left to start learning C#.</p>
+  </div>
+
+  <script>
+    const content = {
+      intro: `
+        <h2>C# Introduction</h2>
+        <p>C# is a modern, object-oriented, and type-safe programming language developed by Microsoft. It is a part of the .NET framework and is widely used for developing Windows applications, web applications, and games (with Unity).</p>
+        <p>C# is versatile and is used in a wide range of applications, including desktop software, web services, and game development.</p>
+      `,
+      syntax: `
+        <h2>C# Syntax</h2>
+        <p>C# syntax is similar to other C-based languages like Java and C++. Here are some key features:</p>
+
+        <h3>Basic Syntax</h3>
+        <ul>
+          <li>Statements end with a semicolon (<code>;</code>).</li>
+          <li>Programs are organized in classes and methods.</li>
+          <li>C# is case-sensitive: <code>myVariable</code> and <code>myvariable</code> are different.</li>
+        </ul>
+
+        <h3>Example</h3>
+        <pre>
+// This is a comment in C#
+
+using System;  // Import the System namespace
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("Hello, World!");  // Output to console
+    }
+}
+        </pre>
+      `,
+      variables: `
+        <h2>C# Variables</h2>
+        <p>In C#, variables are used to store data. You must declare the type of variable before using it, and each variable holds a specific data type.</p>
+
+        <h3>Common Types of Variables:</h3>
+        <ul>
+          <li><code>string</code> - stores text (e.g., "Hello")</li>
+          <li><code>int</code> - stores integers (e.g., 10, -5, 100)</li>
+          <li><code>float</code> - stores floating-point numbers (e.g., 3.14, -2.5)</li>
+          <li><code>char</code> - stores a single character (e.g., 'A')</li>
+          <li><code>bool</code> - stores true or false</li>
+        </ul>
+
+        <pre>
+// Example of variable declaration
+int age = 25;
+float pi = 3.14f;
+char grade = 'A';
+bool isActive = true;
+        </pre>
+      `,
+      datatypes: `
+        <h2>C# Data Types</h2>
+        <p>C# supports several data types:</p>
+        <ul>
+          <li><code>int</code> - Integer type used for whole numbers (e.g., 100, -50)</li>
+          <li><code>float</code> - Floating-point number used for decimal numbers (e.g., 3.14, -2.5)</li>
+          <li><code>double</code> - A larger precision floating-point number</li>
+          <li><code>char</code> - Used for single characters (e.g., 'A', 'Z')</li>
+          <li><code>string</code> - Used for sequences of characters (e.g., "Hello")</li>
+          <li><code>bool</code> - Used for true or false values</li>
+        </ul>
+      `,
+      operators: `
+        <h2>C# Operators</h2>
+        <p>Operators in C# are used to perform operations on variables and values. Some common operators are:</p>
+        <table border="1">
+          <tr><th>Operator</th><th>Name</th><th>Description</th><th>Example</th></tr>
+          <tr><td>+</td><td>Addition</td><td>Adds two values</td><td>x + y</td></tr>
+          <tr><td>-</td><td>Subtraction</td><td>Subtracts one value from another</td><td>x - y</td></tr>
+          <tr><td>*</td><td>Multiplication</td><td>Multiplies two values</td><td>x * y</td></tr>
+          <tr><td>/</td><td>Division</td><td>Divides one value by another</td><td>x / y</td></tr>
+          <tr><td>%</td><td>Modulus</td><td>Returns the remainder of division</td><td>x % y</td></tr>
+          <tr><td>++</td><td>Increment</td><td>Increases the value of a variable by 1</td><td>x++</td></tr>
+          <tr><td>--</td><td>Decrement</td><td>Decreases the value of a variable by 1</td><td>x--</td></tr>
+        </table>
+      `,
+      examples: `
+        <h2>C# Examples</h2>
+        <pre>
+// Example 1: Simple addition
+int a = 5;
+int b = 10;
+int sum = a + b;
+Console.WriteLine("Sum: " + sum);
+
+// Example 2: Concatenating strings
+string name = "Alice";
+Console.WriteLine("Hello " + name);
+        </pre>
+        <h3>Expected Output:</h3>
+        <p><strong>Example 1: Sum of two numbers</strong></p>
+        <pre>Sum: 15</pre>
+        <p><strong>Example 2: Greeting a user</strong></p>
+        <pre>Hello Alice</pre>
+      `,
+      quiz: `
+        <h2>C# Quiz</h2>
+        <div class="quiz-section">
+          <div class="quiz-question">
+            <p><strong>1. What is the correct way to print in C#?</strong></p>
+            <label><input type="radio" name="q1" value="a"> print("Hello");</label>
+            <label><input type="radio" name="q1" value="b"> Console.Print("Hello");</label>
+            <label><input type="radio" name="q1" value="c"> Console.WriteLine("Hello");</label>
+          </div>
+          <div class="quiz-question">
+            <p><strong>2. Which data type is used to store true or false values?</strong></p>
+            <label><input type="radio" name="q2" value="a"> int</label>
+            <label><input type="radio" name="q2" value="b"> string</label>
+            <label><input type="radio" name="q2" value="c"> bool</label>
+          </div>
+          <button class="btn" onclick="checkQuiz()">Submit Answers</button>
+          <p id="quiz-result"></p>
+        </div>
+      `
+    };
+
+    function loadContent(topic) {
+      document.getElementById("content").innerHTML = content[topic] || "<h2>Content not found</h2>";
+    }
+
+    function checkQuiz() {
+      const answer1 = document.querySelector('input[name="q1"]:checked');
+      const answer2 = document.querySelector('input[name="q2"]:checked');
+      let score = 0;
+
+      if (answer1 && answer1.value === "c") score++;
+      if (answer2 && answer2.value === "c") score++;
+
+      const result = document.getElementById("quiz-result");
+      result.innerHTML = `You got ${score}/2 correct.`;
+    }
+  </script>
+
+</body>
+</html>
 
