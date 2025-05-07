@@ -114,7 +114,17 @@
     const content = {
       intro: `
         <h2>Java Introduction</h2>
-        <p>Java is a high-level, class-based, object-oriented programming language used to build portable applications.</p>
+        <p>Java is a popular programming language, created in 1995. It is owned by Oracle, and more than 3 billion devices run Java.</p>
+        <p>It is used for:</p>
+        <ul>
+          <li>Mobile applications (especially Android apps)</li>
+          <li>Desktop applications</li>
+          <li>Web applications</li>
+          <li>Web servers and application servers</li>
+          <li>Games</li>
+          <li>Database connection</li>
+          <li>And much, much more!</li>
+        </ul>
       `,
       syntax: `
         <h2>Java Syntax</h2>
@@ -129,10 +139,21 @@ public class Main {
       `,
       variables: `
         <h2>Java Variables</h2>
-        <p>Variables are containers for storing data values. Java is statically typed, so you must declare the type.</p>
+        <p>Variables are containers for storing data values.</p>
+        <p>In Java, there are different types of variables, for example:</p>
+        <ul>
+          <li><code>String</code> - stores text, such as "Hello". String values are surrounded by double quotes</li>
+          <li><code>int</code> - stores integers (whole numbers), without decimals, such as 123 or -123</li>
+          <li><code>float</code> - stores floating point numbers, with decimals, such as 19.99 or -19.99</li>
+          <li><code>char</code> - stores single characters, such as 'a' or 'B'. Char values are surrounded by single quotes</li>
+          <li><code>boolean</code> - stores values with two states: true or false</li>
+        </ul>
         <pre>
-int age = 25;
 String name = "John";
+int age = 25;
+float salary = 5000.50f;
+char grade = 'A';
+boolean isJavaFun = true;
         </pre>
       `,
       datatypes: `
@@ -148,13 +169,56 @@ String name = "John";
       operators: `
         <h2>Java Operators</h2>
         <p>Operators are used to perform operations on variables and values.</p>
-        <ul>
-          <li>+ Addition</li>
-          <li>- Subtraction</li>
-          <li>* Multiplication</li>
-          <li>/ Division</li>
-          <li>== Equal to</li>
-        </ul>
+        <table border="1">
+          <tr>
+            <th>Operator</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Example</th>
+          </tr>
+          <tr>
+            <td>+</td>
+            <td>Addition</td>
+            <td>Adds together two values</td>
+            <td>x + y</td>
+          </tr>
+          <tr>
+            <td>-</td>
+            <td>Subtraction</td>
+            <td>Subtracts one value from another</td>
+            <td>x - y</td>
+          </tr>
+          <tr>
+            <td>*</td>
+            <td>Multiplication</td>
+            <td>Multiplies two values</td>
+            <td>x * y</td>
+          </tr>
+          <tr>
+            <td>/</td>
+            <td>Division</td>
+            <td>Divides one value by another</td>
+            <td>x / y</td>
+          </tr>
+          <tr>
+            <td>%</td>
+            <td>Modulus</td>
+            <td>Returns the division remainder</td>
+            <td>x % y</td>
+          </tr>
+          <tr>
+            <td>++</td>
+            <td>Increment</td>
+            <td>Increases the value of a variable by 1</td>
+            <td>++x</td>
+          </tr>
+          <tr>
+            <td>--</td>
+            <td>Decrement</td>
+            <td>Decreases the value of a variable by 1</td>
+            <td>--x</td>
+          </tr>
+        </table>
       `,
       examples: `
         <h2>Java Examples</h2>
@@ -175,6 +239,11 @@ public class Hello {
   }
 }
         </pre>
+        <h3>Expected Output:</h3>
+        <p><strong>Example 1: Sum of two numbers</strong></p>
+        <pre>Sum: 15</pre>
+        <p><strong>Example 2: Greeting a user</strong></p>
+        <pre>Hello Alice</pre>
       `,
       quiz: `
         <h2>Java Quiz</h2>
@@ -216,31 +285,3 @@ public class Hello {
 
 </body>
 </html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Java Program Output</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f9;
-      color: #333;
-      margin: 20px;
-    }
-    .output {
-      background-color: #e8f5e9;
-      border: 1px solid #388e3c;
-      padding: 10px;
-      border-radius: 5px;
-      font-family: 'Courier New', Courier, monospace;
-    }
-  </style>
-</head>
-<body>
-
-  <h1>Java Program Simulation</h1>
-  <p>This is the simulated output of the Java program:</p>
-
-  <div class="output" id="output"></div>
-
