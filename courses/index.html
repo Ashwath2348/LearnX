@@ -4,202 +4,169 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>E-Learn Quest</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/a2e0b5f36f.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
       --primary-green: #00a86b;
       --secondary-green: #007f5f;
-      --light-bg: #f5fdf9;
+      --light-green-bg: #e6f5ef;
       --white: #ffffff;
-      --dark: #1e1e1e;
-      --text-color: #333;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+      --gray: #f5f5f5;
+      --text: #333;
     }
 
     body {
+      margin: 0;
       font-family: 'Inter', sans-serif;
+      background-color: var(--gray);
+      color: var(--text);
       display: flex;
-      background-color: var(--light-bg);
-      color: var(--text-color);
     }
 
     .sidebar {
-      width: 250px;
+      width: 240px;
       background: linear-gradient(to bottom, var(--secondary-green), var(--primary-green));
       color: white;
-      height: 100vh;
-      padding: 30px 20px;
-      position: fixed;
-      transition: 0.3s;
+      min-height: 100vh;
+      padding-top: 30px;
     }
 
-    .sidebar h2 {
+    .sidebar h1 {
+      text-align: center;
       font-size: 24px;
       margin-bottom: 30px;
     }
 
-    .nav-button {
-      display: flex;
-      align-items: center;
+    .sidebar button {
+      width: 100%;
       background: none;
       border: none;
       color: white;
-      font-size: 16px;
-      padding: 12px;
-      width: 100%;
+      padding: 15px 20px;
+      text-align: left;
       cursor: pointer;
-      margin-bottom: 10px;
-      transition: background 0.2s;
+      font-size: 16px;
+      transition: background 0.3s;
     }
 
-    .nav-button:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 8px;
+    .sidebar button:hover {
+      background-color: rgba(255, 255, 255, 0.1);
     }
 
-    .nav-button i {
-      margin-right: 12px;
-    }
-
-    main {
-      margin-left: 250px;
+    .main-content {
+      flex: 1;
       padding: 40px;
-      width: 100%;
     }
 
     .section {
       display: none;
-      max-width: 900px;
-      margin: 0 auto;
-      background-color: var(--white);
-      border-radius: 16px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-      padding: 30px;
-      transition: all 0.3s ease-in-out;
     }
 
-    .section.active {
+    .active {
       display: block;
     }
 
-    h2 {
-      color: var(--secondary-green);
-      margin-bottom: 20px;
+    .course-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
     }
 
-    input[type="text"] {
-      width: 60%;
-      padding: 12px;
-      margin: 10px 0;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-    }
-
-    button.submit-btn {
-      padding: 10px 20px;
-      background-color: var(--primary-green);
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      margin-left: 10px;
-    }
-
-    .output {
-      margin-top: 10px;
-      font-weight: 600;
-    }
-
-    audio, video {
-      width: 100%;
-      margin-top: 20px;
+    .course-card {
+      background-color: var(--white);
       border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s;
+    }
+
+    .course-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .course-card img {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 10px;
+    }
+
+    .course-card h3 {
+      font-size: 16px;
+      margin: 0;
     }
   </style>
 </head>
 <body>
   <div class="sidebar">
-    <h2>E-Learn Quest</h2>
-    <button class="nav-button" onclick="showSection('logic')"><i class="fas fa-brain"></i> Logic</button>
-    <button class="nav-button" onclick="showSection('audio')"><i class="fas fa-headphones"></i> Audiobooks</button>
-    <button class="nav-button" onclick="showSection('visual')"><i class="fas fa-video"></i> Visual Learning</button>
+    <h1>E-Learn Quest</h1>
+    <button onclick="showSection('home')">Home</button>
+    <button onclick="showSection('courses')">Courses</button>
+    <button onclick="showSection('audio')">Audiobooks</button>
+    <button onclick="showSection('visual')">Visual Learning</button>
   </div>
 
-  <main>
-    <section id="logic" class="section active">
-      <h2>Logic Questions</h2>
-      <p>Print even numbers from 1 to 10 using a loop.</p>
-      <input type="text" id="input1">
-      <button class="submit-btn" onclick="solveQuestion1()">Submit</button>
-      <div class="output" id="output1"></div>
+  <div class="main-content">
+    <div id="home" class="section active">
+      <h2>Welcome to E-Learn Quest</h2>
+      <p>Gamify your learning. Earn points. Unlock levels. Master skills.</p>
+    </div>
 
-      <p>Check if a number is positive or negative.</p>
-      <input type="text" id="input2">
-      <button class="submit-btn" onclick="solveQuestion2()">Submit</button>
-      <div class="output" id="output2"></div>
+    <div id="courses" class="section">
+      <h2>Programming Courses</h2>
+      <div class="course-grid">
+        <div class="course-card">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+          <h3>Python</h3>
+        </div>
+        <div class="course-card">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java">
+          <h3>Java</h3>
+        </div>
+        <div class="course-card">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
+          <h3>JavaScript</h3>
+        </div>
+        <div class="course-card">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++">
+          <h3>C++</h3>
+        </div>
+        <div class="course-card">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#">
+          <h3>C#</h3>
+        </div>
+        <div class="course-card">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML">
+          <h3>HTML</h3>
+        </div>
+        <div class="course-card">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS">
+          <h3>CSS</h3>
+        </div>
+        <div class="course-card">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP">
+          <h3>PHP</h3>
+        </div>
+      </div>
+    </div>
 
-      <p>Store names in order using linear structure.</p>
-      <input type="text" id="input3">
-      <button class="submit-btn" onclick="solveQuestion3()">Submit</button>
-      <div class="output" id="output3"></div>
-
-      <p>Reverse a string using a data structure.</p>
-      <input type="text" id="input4">
-      <button class="submit-btn" onclick="solveQuestion4()">Submit</button>
-      <div class="output" id="output4"></div>
-    </section>
-
-    <section id="audio" class="section">
+    <div id="audio" class="section">
       <h2>Learn by Listening</h2>
-      <audio controls src="narrator friendly en.mp3"></audio>
-      <audio controls src="audio2.mp3"></audio>
-      <audio controls src="audio3.mp3"></audio>
-    </section>
+      <audio controls><source src="narrator friendly en.mp3" type="audio/mp3"></audio>
+      <audio controls><source src="audio2.mp3" type="audio/mp3"></audio>
+      <audio controls><source src="audio3.mp3" type="audio/mp3"></audio>
+    </div>
 
-    <section id="visual" class="section">
+    <div id="visual" class="section">
       <h2>Visual Learning</h2>
-      <video controls>
-        <source src="JAVA1.mp4" type="video/mp4">
-      </video>
-    </section>
-  </main>
+      <video width="100%" height="auto" controls><source src="JAVA1.mp4" type="video/mp4"></video>
+    </div>
+  </div>
 
   <script>
     function showSection(id) {
       document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
       document.getElementById(id).classList.add('active');
-    }
-
-    function solveQuestion1() {
-      const result = [];
-      for (let i = 2; i <= 10; i += 2) result.push(i);
-      document.getElementById("output1").innerText = "Output: " + result.join(", ");
-    }
-
-    function solveQuestion2() {
-      const val = parseFloat(document.getElementById("input2").value);
-      let res = "";
-      if (isNaN(val)) res = "Invalid number.";
-      else if (val > 0) res = "Output: Positive";
-      else if (val < 0) res = "Output: Negative";
-      else res = "Output: Zero";
-      document.getElementById("output2").innerText = res;
-    }
-
-    function solveQuestion3() {
-      const names = document.getElementById("input3").value.split(",").map(n => n.trim());
-      document.getElementById("output3").innerText = "Stored: " + names.join(" → ");
-    }
-
-    function solveQuestion4() {
-      const str = document.getElementById("input4").value;
-      document.getElementById("output4").innerText = "Reversed: " + str.split("").reverse().join("");
     }
   </script>
 </body>
