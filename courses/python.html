@@ -114,76 +114,119 @@
     const content = {
       intro: `
         <h2>Python Introduction</h2>
-        <p>Python is an interpreted, high-level, general-purpose programming language with simple syntax.</p>
+        <p>Python is a popular programming language created by Guido van Rossum and first released in 1991. It is known for its simplicity and readability, making it an excellent choice for beginners. Python is widely used for web development, data science, automation, machine learning, and much more.</p>
+        <p>It supports multiple programming paradigms, including procedural, object-oriented, and functional programming.</p>
       `,
       syntax: `
         <h2>Python Syntax</h2>
-        <p>Python uses indentation to define blocks of code.</p>
+        <p>Python code is written in a simple, readable format without curly braces or semicolons. The indentation in Python is very important, as it determines the block of code that is executed together.</p>
+        <p>Python uses whitespace (spaces or tabs) to define the scope of loops, conditionals, and other control structures. This makes Python clean and readable but requires careful attention to indentation.</p>
+        
+        <h3>Basic Syntax</h3>
+        <ul>
+          <li>Every statement in Python ends with a newline, not a semicolon.</li>
+          <li>Use indentation (typically 4 spaces) to define code blocks.</li>
+          <li>Python is case-sensitive: <code>Variable</code> and <code>variable</code> are different.</li>
+        </ul>
+
+        <h3>Example</h3>
         <pre>
-print("Hello World")
-if 5 > 2:
-    print("Five is greater than two!")
+# This is a comment
+# Python uses # to add comments in the code
+
+# Example of a simple Python program
+print("Hello World")  # This line prints text to the screen
+
+# Indentation in loops
+for i in range(3):  # The code below will execute 3 times
+    print(i)  # This is inside the loop, indented
+
+# Conditionals in Python
+x = 10
+if x > 5:
+    print("x is greater than 5")  # This is inside the if block, indented
         </pre>
+
+        <h3>Indentation and Whitespace</h3>
+        <p>Python requires consistent indentation to define blocks of code. In the example above, the print statements inside the loop and the if block are indented to show that they belong to those structures.</p>
+        <p>If the indentation is inconsistent, Python will throw an error.</p>
       `,
       variables: `
         <h2>Python Variables</h2>
-        <p>Variables in Python are created when you assign a value to them.</p>
+        <p>Variables are containers for storing data values in Python. Unlike many other programming languages, Python does not require the declaration of variable types. It is dynamically typed, which means variables can change types during runtime.</p>
+        <h3>Common Types of Variables in Python:</h3>
+        <ul>
+          <li><code>String</code> - stores text, such as "Hello". String values are surrounded by double quotes.</li>
+          <li><code>int</code> - stores integers (whole numbers), without decimals, such as 123 or -123.</li>
+          <li><code>float</code> - stores floating-point numbers, with decimals, such as 19.99 or -19.99.</li>
+          <li><code>char</code> - stores a single character, like 'a' or 'B'. Char values are surrounded by single quotes.</li>
+          <li><code>boolean</code> - stores values with two states: <code>True</code> or <code>False</code>.</li>
+        </ul>
         <pre>
-age = 25
+# Example of variables
 name = "John"
+age = 25
+height = 5.9
+is_student = True
         </pre>
       `,
       datatypes: `
         <h2>Python Data Types</h2>
-        <p>Python supports various data types such as int, float, str, bool, list, tuple, etc.</p>
+        <p>Python supports different data types such as:</p>
         <ul>
-          <li><code>int</code> - whole numbers</li>
-          <li><code>float</code> - decimal numbers</li>
-          <li><code>str</code> - text</li>
-          <li><code>bool</code> - True or False</li>
+          <li><code>int</code> - Integer numbers (e.g., 10, -5, 0)</li>
+          <li><code>float</code> - Floating-point numbers (e.g., 3.14, -0.1)</li>
+          <li><code>str</code> - Strings (e.g., "Hello", "Python")</li>
+          <li><code>bool</code> - Boolean values (e.g., <code>True</code>, <code>False</code>)</li>
+          <li><code>list</code> - An ordered collection of items (e.g., [1, 2, 3], ["apple", "banana"])</li>
+          <li><code>tuple</code> - Similar to lists, but immutable (e.g., (1, 2, 3))</li>
         </ul>
       `,
       operators: `
         <h2>Python Operators</h2>
-        <p>Operators are used to perform operations on variables and values.</p>
-        <ul>
-          <li>+ Addition</li>
-          <li>- Subtraction</li>
-          <li>* Multiplication</li>
-          <li>/ Division</li>
-          <li>== Equal to</li>
-        </ul>
+        <p>Operators are used to perform operations on variables and values. Here are some common operators in Python:</p>
+        <table border="1">
+          <tr><th>Operator</th><th>Name</th><th>Description</th><th>Example</th></tr>
+          <tr><td>+</td><td>Addition</td><td>Adds two values</td><td>x + y</td></tr>
+          <tr><td>-</td><td>Subtraction</td><td>Subtracts one value from another</td><td>x - y</td></tr>
+          <tr><td>*</td><td>Multiplication</td><td>Multiplies two values</td><td>x * y</td></tr>
+          <tr><td>/</td><td>Division</td><td>Divides one value by another</td><td>x / y</td></tr>
+          <tr><td>%</td><td>Modulus</td><td>Returns the remainder of division</td><td>x % y</td></tr>
+          <tr><td>++</td><td>Increment</td><td>Increases the value of a variable by 1</td><td>++x</td></tr>
+          <tr><td>--</td><td>Decrement</td><td>Decreases the value of a variable by 1</td><td>--x</td></tr>
+        </table>
       `,
       examples: `
         <h2>Python Examples</h2>
         <pre>
-# Sum of two numbers
-a = 5
-b = 10
-print("Sum:", a + b)
-        </pre>
-        <pre>
-# Greeting a user
+# Example 1: Simple addition
+x = 5
+y = 10
+result = x + y
+print("Result of addition:", result)
+
+# Example 2: String concatenation
 name = "Alice"
-print("Hello", name)
+greeting = "Hello, " + name
+print(greeting)
         </pre>
         <h3>Expected Output:</h3>
-        <p><strong>Example 1: Sum of two numbers</strong></p>
-        <pre>Sum: 15</pre>
-        <p><strong>Example 2: Greeting a user</strong></p>
-        <pre>Hello Alice</pre>
+        <p><strong>Example 1: Simple addition</strong></p>
+        <pre>Result of addition: 15</pre>
+        <p><strong>Example 2: String concatenation</strong></p>
+        <pre>Hello, Alice</pre>
       `,
       quiz: `
         <h2>Python Quiz</h2>
         <div class="quiz-section">
           <div class="quiz-question">
-            <p><strong>1. How do you print "Hello World" in Python?</strong></p>
-            <label><input type="radio" name="q1" value="a"> echo "Hello World"</label>
-            <label><input type="radio" name="q1" value="b"> print("Hello World")</label>
-            <label><input type="radio" name="q1" value="c"> Console.WriteLine("Hello World")</label>
+            <p><strong>1. What is the correct way to print in Python?</strong></p>
+            <label><input type="radio" name="q1" value="a"> echo("Hello");</label>
+            <label><input type="radio" name="q1" value="b"> print("Hello");</label>
+            <label><input type="radio" name="q1" value="c"> System.out.println("Hello");</label>
           </div>
           <div class="quiz-question">
-            <p><strong>2. Which data type is used to store text in Python?</strong></p>
+            <p><strong>2. Which data type is used to store text?</strong></p>
             <label><input type="radio" name="q2" value="a"> int</label>
             <label><input type="radio" name="q2" value="b"> str</label>
             <label><input type="radio" name="q2" value="c"> bool</label>
