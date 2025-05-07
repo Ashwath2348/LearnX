@@ -1,1 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Java Tutorial</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .sidebar {
+      width: 250px;
+      background-color: #f1f1f1;
+      padding: 20px;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+      overflow-y: auto;
+    }
+
+    .sidebar h2 {
+      font-size: 20px;
+      margin-top: 0;
+      color: #f89820;
+    }
+
+    .sidebar ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .sidebar ul li {
+      margin: 10px 0;
+    }
+
+    .sidebar ul li a {
+      text-decoration: none;
+      color: #000;
+      display: block;
+      padding: 8px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .sidebar ul li a:hover {
+      background-color: #f89820;
+      color: white;
+    }
+
+    .main-content {
+      flex-grow: 1;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    pre {
+      background: #eee;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .quiz-section {
+      margin-top: 30px;
+    }
+
+    .quiz-question {
+      margin-bottom: 20px;
+    }
+
+    .quiz-question label {
+      display: block;
+    }
+
+    .btn {
+      margin-top: 10px;
+      background-color: #f89820;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #d87c1c;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sidebar">
+    <h2>Java Tutorial</h2>
+    <ul>
+      <li><a onclick="loadContent('intro')">Java Intro</a></li>
+      <li><a onclick="loadContent('syntax')">Java Syntax</a></li>
+      <li><a onclick="loadContent('variables')">Java Variables</a></li>
+      <li><a onclick="loadContent('datatypes')">Java Data Types</a></li>
+      <li><a onclick="loadContent('operators')">Java Operators</a></li>
+      <li><a onclick="loadContent('examples')">Examples</a></li>
+      <li><a onclick="loadContent('quiz')">Quiz</a></li>
+    </ul>
+  </div>
+
+  <div class="main-content" id="content">
+    <h2>Welcome to Java Tutorial</h2>
+    <p>Select a topic from the left to start learning Java.</p>
+  </div>
+
+  <script>
+    const content = {
+      intro: `
+        <h2>Java Introduction</h2>
+        <p>Java is a high-level, class-based, object-oriented programming language used to build portable applications.</p>
+      `,
+      syntax: `
+        <h2>Java Syntax</h2>
+        <p>Java code is written inside classes and methods using curly braces.</p>
+        <pre>
+public class Main {
+  public static void main(String[] args) {
+    System.out.println("Hello World");
+  }
+}
+        </pre>
+      `,
+      variables: `
+        <h2>Java Variables</h2>
+        <p>Variables are containers for storing data values. Java is statically typed, so you must declare the type.</p>
+        <pre>
+int age = 25;
+String name = "John";
+        </pre>
+      `,
+      datatypes: `
+        <h2>Java Data Types</h2>
+        <p>Java supports different data types like int, float, double, char, String, boolean, etc.</p>
+        <ul>
+          <li><code>int</code> - whole numbers</li>
+          <li><code>double</code> - decimal numbers</li>
+          <li><code>char</code> - single characters</li>
+          <li><code>boolean</code> - true or false</li>
+        </ul>
+      `,
+      operators: `
+        <h2>Java Operators</h2>
+        <p>Operators are used to perform operations on variables and values.</p>
+        <ul>
+          <li>+ Addition</li>
+          <li>- Subtraction</li>
+          <li>* Multiplication</li>
+          <li>/ Division</li>
+          <li>== Equal to</li>
+        </ul>
+      `,
+      examples: `
+        <h2>Java Examples</h2>
+        <pre>
+public class Main {
+  public static void main(String[] args) {
+    int a = 5, b = 10;
+    int sum = a + b;
+    System.out.println("Sum: " + sum);
+  }
+}
+        </pre>
+        <pre>
+public class Hello {
+  public static void main(String[] args) {
+    String name = "Alice";
+    System.out.println("Hello " + name);
+  }
+}
+        </pre>
+      `,
+      quiz: `
+        <h2>Java Quiz</h2>
+        <div class="quiz-section">
+          <div class="quiz-question">
+            <p><strong>1. What is the correct way to print in Java?</strong></p>
+            <label><input type="radio" name="q1" value="a"> echo("Hello");</label>
+            <label><input type="radio" name="q1" value="b"> print("Hello");</label>
+            <label><input type="radio" name="q1" value="c"> System.out.println("Hello");</label>
+          </div>
+          <div class="quiz-question">
+            <p><strong>2. Which data type is used to store text?</strong></p>
+            <label><input type="radio" name="q2" value="a"> int</label>
+            <label><input type="radio" name="q2" value="b"> String</label>
+            <label><input type="radio" name="q2" value="c"> char</label>
+          </div>
+          <button class="btn" onclick="checkQuiz()">Submit Answers</button>
+          <p id="quiz-result"></p>
+        </div>
+      `
+    };
+
+    function loadContent(topic) {
+      document.getElementById("content").innerHTML = content[topic] || "<h2>Content not found</h2>";
+    }
+
+    function checkQuiz() {
+      const answer1 = document.querySelector('input[name="q1"]:checked');
+      const answer2 = document.querySelector('input[name="q2"]:checked');
+      let score = 0;
+
+      if (answer1 && answer1.value === "c") score++;
+      if (answer2 && answer2.value === "b") score++;
+
+      const result = document.getElementById("quiz-result");
+      result.innerHTML = `You got ${score}/2 correct.`;
+    }
+  </script>
+
+</body>
+</html>
 
