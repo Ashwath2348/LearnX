@@ -1,1 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>C++ Tutorial</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+      background-color: #e8f5e9; /* Light green background */
+    }
+
+    .sidebar {
+      width: 250px;
+      background-color: #ffffff; /* White sidebar */
+      padding: 20px;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+      overflow-y: auto;
+    }
+
+    .sidebar h2 {
+      font-size: 20px;
+      margin-top: 0;
+      color: #388e3c; /* Dark green */
+    }
+
+    .sidebar ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .sidebar ul li {
+      margin: 10px 0;
+    }
+
+    .sidebar ul li a {
+      text-decoration: none;
+      color: #2e7d32; /* Medium green */
+      display: block;
+      padding: 8px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .sidebar ul li a:hover {
+      background-color: #a5d6a7; /* Light green hover */
+      color: #1b5e20; /* Darker text */
+    }
+
+    .main-content {
+      flex-grow: 1;
+      padding: 20px;
+      overflow-y: auto;
+      background-color: #f1f8e9; /* Light green content area */
+    }
+
+    pre {
+      background: #e0f2f1; /* Slightly teal-green */
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .quiz-section {
+      margin-top: 30px;
+    }
+
+    .quiz-question {
+      margin-bottom: 20px;
+    }
+
+    .quiz-question label {
+      display: block;
+    }
+
+    .btn {
+      margin-top: 10px;
+      background-color: #43a047; /* Green button */
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #2e7d32; /* Darker green on hover */
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sidebar">
+    <h2>C++ Tutorial</h2>
+    <ul>
+      <li><a onclick="loadContent('intro')">C++ Intro</a></li>
+      <li><a onclick="loadContent('syntax')">C++ Syntax</a></li>
+      <li><a onclick="loadContent('variables')">C++ Variables</a></li>
+      <li><a onclick="loadContent('datatypes')">C++ Data Types</a></li>
+      <li><a onclick="loadContent('operators')">C++ Operators</a></li>
+      <li><a onclick="loadContent('examples')">Examples</a></li>
+      <li><a onclick="loadContent('quiz')">Quiz</a></li>
+    </ul>
+  </div>
+
+  <div class="main-content" id="content">
+    <h2>Welcome to C++ Tutorial</h2>
+    <p>Select a topic from the left to start learning C++.</p>
+  </div>
+
+  <script>
+    const content = {
+      intro: `
+        <h2>C++ Introduction</h2>
+        <p>C++ is a powerful, high-performance programming language often used for system/software development and game programming. It was developed by Bjarne Stroustrup in the early 1980s as an extension of the C programming language.</p>
+        <p>C++ is widely used in applications requiring high-performance such as video games, operating systems, and real-time applications.</p>
+      `,
+      syntax: `
+        <h2>C++ Syntax</h2>
+        <p>C++ syntax is the set of rules that define the structure of C++ programs. Here are some basic rules:</p>
+
+        <h3>Basic Syntax</h3>
+        <ul>
+          <li>Statements end with a semicolon (<code>;</code>).</li>
+          <li>C++ code is written inside functions, and functions are defined within classes.</li>
+          <li>C++ is case-sensitive: <code>myVariable</code> and <code>myvariable</code> are different.</li>
+        </ul>
+
+        <h3>Example</h3>
+        <pre>
+// This is a comment
+// C++ uses // for single-line comments
+
+#include <iostream> // Include the input/output library
+
+using namespace std;
+
+int main() {
+    cout << "Hello, World!" << endl;  // Print message to console
+    return 0;
+}
+        </pre>
+      `,
+      variables: `
+        <h2>C++ Variables</h2>
+        <p>Variables in C++ are used to store data that can be used and manipulated throughout the program. A variable is declared by specifying its type followed by its name.</p>
+
+        <h3>Common Types of Variables:</h3>
+        <ul>
+          <li><code>int</code> - stores integers (e.g., 10, -5, 100)</li>
+          <li><code>float</code> - stores floating-point numbers (e.g., 3.14, -2.5)</li>
+          <li><code>double</code> - stores double-precision floating-point numbers</li>
+          <li><code>char</code> - stores a single character (e.g., 'a', 'A')</li>
+          <li><code>string</code> - stores a sequence of characters (e.g., "Hello")</li>
+          <li><code>bool</code> - stores Boolean values (<code>true</code> or <code>false</code>)</li>
+        </ul>
+
+        <pre>
+// Example of variable declaration
+int age = 25;
+float pi = 3.14;
+char grade = 'A';
+bool isStudent = true;
+        </pre>
+      `,
+      datatypes: `
+        <h2>C++ Data Types</h2>
+        <p>C++ supports several data types:</p>
+        <ul>
+          <li><code>int</code> - Integer data type used for whole numbers (e.g., 100, -50)</li>
+          <li><code>float</code> - Floating-point number used for decimal numbers (e.g., 3.14, -2.5)</li>
+          <li><code>double</code> - A larger precision floating-point number</li>
+          <li><code>char</code> - Used for single characters (e.g., 'a', 'A')</li>
+          <li><code>bool</code> - Boolean data type for true or false</li>
+        </ul>
+      `,
+      operators: `
+        <h2>C++ Operators</h2>
+        <p>Operators are symbols used to perform operations on variables and values. Here are some of the common operators in C++:</p>
+        <table border="1">
+          <tr><th>Operator</th><th>Name</th><th>Description</th><th>Example</th></tr>
+          <tr><td>+</td><td>Addition</td><td>Adds two values</td><td>x + y</td></tr>
+          <tr><td>-</td><td>Subtraction</td><td>Subtracts one value from another</td><td>x - y</td></tr>
+          <tr><td>*</td><td>Multiplication</td><td>Multiplies two values</td><td>x * y</td></tr>
+          <tr><td>/</td><td>Division</td><td>Divides one value by another</td><td>x / y</td></tr>
+          <tr><td>%</td><td>Modulus</td><td>Returns the remainder of division</td><td>x % y</td></tr>
+          <tr><td>++</td><td>Increment</td><td>Increases the value of a variable by 1</td><td>x++</td></tr>
+          <tr><td>--</td><td>Decrement</td><td>Decreases the value of a variable by 1</td><td>x--</td></tr>
+        </table>
+      `,
+      examples: `
+        <h2>C++ Examples</h2>
+        <pre>
+// Example 1: Simple addition
+int a = 5;
+int b = 10;
+int sum = a + b;
+cout << "Sum: " << sum << endl;
+
+// Example 2: Concatenating strings
+string name = "Alice";
+cout << "Hello " << name << endl;
+        </pre>
+        <h3>Expected Output:</h3>
+        <p><strong>Example 1: Sum of two numbers</strong></p>
+        <pre>Sum: 15</pre>
+        <p><strong>Example 2: Greeting a user</strong></p>
+        <pre>Hello Alice</pre>
+      `,
+      quiz: `
+        <h2>C++ Quiz</h2>
+        <div class="quiz-section">
+          <div class="quiz-question">
+            <p><strong>1. What is the
 
