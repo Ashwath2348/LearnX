@@ -1,221 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>E-Learn Quest</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a2e0b5f36f.js" crossorigin="anonymous"></script>
   <style>
     :root {
       --primary-green: #00a86b;
       --secondary-green: #007f5f;
-      --light-green-bg: #e6f5ef;
+      --light-bg: #f5fdf9;
       --white: #ffffff;
+      --dark: #1e1e1e;
+      --text-color: #333;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: var(--light-green-bg);
-      color: #222;
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      background-color: var(--light-bg);
+      color: var(--text-color);
     }
 
-    header {
-      background: linear-gradient(to right, var(--secondary-green), var(--primary-green));
+    .sidebar {
+      width: 250px;
+      background: linear-gradient(to bottom, var(--secondary-green), var(--primary-green));
       color: white;
-      padding: 40px 20px;
-      text-align: center;
-      border-bottom-left-radius: 40px;
-      border-bottom-right-radius: 40px;
+      height: 100vh;
+      padding: 30px 20px;
+      position: fixed;
+      transition: 0.3s;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 36px;
+    .sidebar h2 {
+      font-size: 24px;
+      margin-bottom: 30px;
     }
 
-    header p {
-      font-size: 18px;
-      margin-top: 10px;
-    }
-
-    .button-container {
-      text-align: center;
-      margin-top: 20px;
-    }
-
-    .button-container button {
-      background-color: var(--white);
-      color: var(--primary-green);
-      border: 2px solid var(--primary-green);
-      padding: 10px 20px;
-      margin: 10px;
-      border-radius: 30px;
-      cursor: pointer;
+    .nav-button {
+      display: flex;
+      align-items: center;
+      background: none;
+      border: none;
+      color: white;
       font-size: 16px;
-      transition: all 0.3s ease;
+      padding: 12px;
+      width: 100%;
+      cursor: pointer;
+      margin-bottom: 10px;
+      transition: background 0.2s;
     }
 
-    .button-container button:hover {
-      background-color: var(--primary-green);
-      color: var(--white);
+    .nav-button:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
     }
 
-    .content-section {
+    .nav-button i {
+      margin-right: 12px;
+    }
+
+    main {
+      margin-left: 250px;
+      padding: 40px;
+      width: 100%;
+    }
+
+    .section {
       display: none;
-      margin: 30px auto;
-      padding: 30px;
-      width: 90%;
-      max-width: 700px;
+      max-width: 900px;
+      margin: 0 auto;
       background-color: var(--white);
-      border-radius: 20px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .section.active {
+      display: block;
     }
 
     h2 {
       color: var(--secondary-green);
+      margin-bottom: 20px;
     }
 
     input[type="text"] {
-      padding: 10px;
       width: 60%;
-      max-width: 300px;
-      margin: 10px 5px;
+      padding: 12px;
+      margin: 10px 0;
       border-radius: 8px;
       border: 1px solid #ccc;
-      font-size: 14px;
     }
 
-    .content-section button {
+    button.submit-btn {
       padding: 10px 20px;
-      border-radius: 8px;
-      background-color: var(--secondary-green);
+      background-color: var(--primary-green);
       color: white;
       border: none;
+      border-radius: 8px;
       cursor: pointer;
-    }
-
-    .content-section button:hover {
-      background-color: var(--primary-green);
+      margin-left: 10px;
     }
 
     .output {
       margin-top: 10px;
-      font-weight: bold;
-      color: #333;
+      font-weight: 600;
+    }
+
+    audio, video {
+      width: 100%;
+      margin-top: 20px;
+      border-radius: 12px;
     }
   </style>
 </head>
 <body>
-
-  <header>
-    <h1>E-Learn Quest</h1>
-    <p>Gamify your learning. Earn points. Unlock levels. Master skills.</p>
-  </header>
-
-  <div class="button-container">
-    <button onclick="openSection('logic')">Only Logic Input</button>
-    <button onclick="openSection('audio')">Audiobooks</button>
-    <button onclick="openSection('visual')">Visual Learning</button>
+  <div class="sidebar">
+    <h2>E-Learn Quest</h2>
+    <button class="nav-button" onclick="showSection('logic')"><i class="fas fa-brain"></i> Logic</button>
+    <button class="nav-button" onclick="showSection('audio')"><i class="fas fa-headphones"></i> Audiobooks</button>
+    <button class="nav-button" onclick="showSection('visual')"><i class="fas fa-video"></i> Visual Learning</button>
   </div>
 
-  <!-- Logic Questions Section -->
-  <div id="logic" class="content-section">
-    <h2>Logic Questions</h2>
+  <main>
+    <section id="logic" class="section active">
+      <h2>Logic Questions</h2>
+      <p>Print even numbers from 1 to 10 using a loop.</p>
+      <input type="text" id="input1">
+      <button class="submit-btn" onclick="solveQuestion1()">Submit</button>
+      <div class="output" id="output1"></div>
 
-    <p>Print even numbers from 1 to 10 using a loop.</p>
-    <input type="text" id="input1" placeholder="Enter keyword logic...">
-    <button onclick="solveQuestion1()">Submit</button>
-    <div id="output1" class="output"></div>
+      <p>Check if a number is positive or negative.</p>
+      <input type="text" id="input2">
+      <button class="submit-btn" onclick="solveQuestion2()">Submit</button>
+      <div class="output" id="output2"></div>
 
-    <p>Check if a number is positive or negative.</p>
-    <input type="text" id="input2" placeholder="Enter number...">
-    <button onclick="solveQuestion2()">Submit</button>
-    <div id="output2" class="output"></div>
+      <p>Store names in order using linear structure.</p>
+      <input type="text" id="input3">
+      <button class="submit-btn" onclick="solveQuestion3()">Submit</button>
+      <div class="output" id="output3"></div>
 
-    <p>Store names in order using linear structure.</p>
-    <input type="text" id="input3" placeholder="Enter comma-separated names...">
-    <button onclick="solveQuestion3()">Submit</button>
-    <div id="output3" class="output"></div>
+      <p>Reverse a string using a data structure.</p>
+      <input type="text" id="input4">
+      <button class="submit-btn" onclick="solveQuestion4()">Submit</button>
+      <div class="output" id="output4"></div>
+    </section>
 
-    <p>Reverse a string using a data structure.</p>
-    <input type="text" id="input4" placeholder="Enter a string...">
-    <button onclick="solveQuestion4()">Submit</button>
-    <div id="output4" class="output"></div>
-  </div>
+    <section id="audio" class="section">
+      <h2>Learn by Listening</h2>
+      <audio controls src="narrator friendly en.mp3"></audio>
+      <audio controls src="audio2.mp3"></audio>
+      <audio controls src="audio3.mp3"></audio>
+    </section>
 
-  <!-- Audio Section -->
-  <div id="audio" class="content-section">
-    <h2>Learn by Listening</h2>
-
-    <audio controls>
-      <source src="narrator friendly en.mp3" type="audio/mp3">
-      Your browser does not support the audio element.
-    </audio><br><br>
-
-    <audio controls>
-      <source src="audio2.mp3" type="audio/mp3">
-      Your browser does not support the audio element.
-    </audio><br><br>
-
-    <audio controls>
-      <source src="audio3.mp3" type="audio/mp3">
-      Your browser does not support the audio element.
-    </audio>
-  </div>
-
-  <!-- Visual Learning Section -->
-  <div id="visual" class="content-section">
-    <h2>Visual Learning</h2>
-    <p>Watch this visual tutorial to enhance your understanding:</p>
-    <video width="100%" height="auto" controls>
-      <source src="JAVA1.mp4" type="video/mp4">
-
-    </video>
-  </div>
+    <section id="visual" class="section">
+      <h2>Visual Learning</h2>
+      <video controls>
+        <source src="JAVA1.mp4" type="video/mp4">
+      </video>
+    </section>
+  </main>
 
   <script>
-    function openSection(sectionId) {
-      document.querySelectorAll('.content-section').forEach(el => el.style.display = 'none');
-      document.getElementById(sectionId).style.display = 'block';
+    function showSection(id) {
+      document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
     }
 
     function solveQuestion1() {
       const result = [];
-      for (let i = 2; i <= 10; i += 2) {
-        result.push(i);
-      }
+      for (let i = 2; i <= 10; i += 2) result.push(i);
       document.getElementById("output1").innerText = "Output: " + result.join(", ");
     }
 
     function solveQuestion2() {
-      const input = document.getElementById("input2").value;
-      const num = parseFloat(input);
-      let output = "";
-
-      if (isNaN(num)) {
-        output = "Please enter a valid number.";
-      } else if (num > 0) {
-        output = "Output: Positive";
-      } else if (num < 0) {
-        output = "Output: Negative";
-      } else {
-        output = "Output: Zero";
-      }
-
-      document.getElementById("output2").innerText = output;
+      const val = parseFloat(document.getElementById("input2").value);
+      let res = "";
+      if (isNaN(val)) res = "Invalid number.";
+      else if (val > 0) res = "Output: Positive";
+      else if (val < 0) res = "Output: Negative";
+      else res = "Output: Zero";
+      document.getElementById("output2").innerText = res;
     }
 
     function solveQuestion3() {
-      const input = document.getElementById("input3").value;
-      const names = input.split(",").map(name => name.trim());
-      document.getElementById("output3").innerText = "Stored in order: " + names.join(" → ");
+      const names = document.getElementById("input3").value.split(",").map(n => n.trim());
+      document.getElementById("output3").innerText = "Stored: " + names.join(" → ");
     }
 
     function solveQuestion4() {
-      const input = document.getElementById("input4").value;
-      const reversed = input.split("").reverse().join("");
-      document.getElementById("output4").innerText = "Reversed String: " + reversed;
+      const str = document.getElementById("input4").value;
+      document.getElementById("output4").innerText = "Reversed: " + str.split("").reverse().join("");
     }
   </script>
-
 </body>
 </html>
