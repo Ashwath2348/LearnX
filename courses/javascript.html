@@ -1,1 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Tutorial</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+      background-color: #e8f5e9; /* Light green background */
+    }
+
+    .sidebar {
+      width: 250px;
+      background-color: #ffffff; /* White sidebar */
+      padding: 20px;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+      overflow-y: auto;
+    }
+
+    .sidebar h2 {
+      font-size: 20px;
+      margin-top: 0;
+      color: #388e3c; /* Dark green */
+    }
+
+    .sidebar ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .sidebar ul li {
+      margin: 10px 0;
+    }
+
+    .sidebar ul li a {
+      text-decoration: none;
+      color: #2e7d32; /* Medium green */
+      display: block;
+      padding: 8px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .sidebar ul li a:hover {
+      background-color: #a5d6a7; /* Light green hover */
+      color: #1b5e20; /* Darker text */
+    }
+
+    .main-content {
+      flex-grow: 1;
+      padding: 20px;
+      overflow-y: auto;
+      background-color: #f1f8e9; /* Light green content area */
+    }
+
+    pre {
+      background: #e0f2f1; /* Slightly teal-green */
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .quiz-section {
+      margin-top: 30px;
+    }
+
+    .quiz-question {
+      margin-bottom: 20px;
+    }
+
+    .quiz-question label {
+      display: block;
+    }
+
+    .btn {
+      margin-top: 10px;
+      background-color: #43a047; /* Green button */
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #2e7d32; /* Darker green on hover */
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sidebar">
+    <h2>JavaScript Tutorial</h2>
+    <ul>
+      <li><a onclick="loadContent('intro')">JavaScript Intro</a></li>
+      <li><a onclick="loadContent('syntax')">JavaScript Syntax</a></li>
+      <li><a onclick="loadContent('variables')">JavaScript Variables</a></li>
+      <li><a onclick="loadContent('datatypes')">JavaScript Data Types</a></li>
+      <li><a onclick="loadContent('operators')">JavaScript Operators</a></li>
+      <li><a onclick="loadContent('examples')">Examples</a></li>
+      <li><a onclick="loadContent('quiz')">Quiz</a></li>
+    </ul>
+  </div>
+
+  <div class="main-content" id="content">
+    <h2>Welcome to JavaScript Tutorial</h2>
+    <p>Select a topic from the left to start learning JavaScript.</p>
+  </div>
+
+  <script>
+    const content = {
+      intro: `
+        <h2>JavaScript Introduction</h2>
+        <p>JavaScript is a programming language that allows you to create dynamic and interactive content on websites. Initially used for client-side scripting in web browsers, JavaScript is now widely used on both the client and server sides (Node.js).</p>
+        <p>It is one of the core technologies of web development, alongside HTML and CSS. JavaScript is an essential tool for creating modern web applications.</p>
+      `,
+      syntax: `
+        <h2>JavaScript Syntax</h2>
+        <p>JavaScript syntax is the set of rules that define a correctly structured JavaScript program. It is similar to other programming languages like C and Java, with a few differences.</p>
+
+        <h3>Basic Syntax</h3>
+        <ul>
+          <li>JavaScript statements are terminated by a semicolon (<code>;</code>).</li>
+          <li>JavaScript uses curly braces (<code>{}</code>) to define code blocks.</li>
+          <li>JavaScript is case-sensitive: <code>myVariable</code> and <code>myvariable</code> are different.</li>
+        </ul>
+
+        <h3>Example</h3>
+        <pre>
+// This is a comment
+// JavaScript uses // for single-line comments
+
+// Example of a simple JavaScript program
+console.log("Hello, World!");  // This line prints text to the console
+
+// Conditional statement
+let x = 10;
+if (x > 5) {
+  console.log("x is greater than 5");  // This is inside the if block, within curly braces
+}
+        </pre>
+
+        <h3>Code Block and Indentation</h3>
+        <p>JavaScript uses curly braces (<code>{}</code>) to define blocks of code, such as in loops or conditional statements. While indentation is not strictly required, it is highly recommended to improve code readability.</p>
+      `,
+      variables: `
+        <h2>JavaScript Variables</h2>
+        <p>Variables are used to store data values in JavaScript. A variable is created using one of the following keywords: <code>var</code>, <code>let</code>, or <code>const</code>. </p>
+
+        <h3>Common Types of Variables:</h3>
+        <ul>
+          <li><code>string</code> - stores text (e.g., "Hello World")</li>
+          <li><code>number</code> - stores numbers (e.g., 100, 25.5)</li>
+          <li><code>boolean</code> - stores <code>true</code> or <code>false</code></li>
+        </ul>
+
+        <pre>
+// Example of variables
+let name = "John";
+let age = 25;
+let isStudent = true;
+        </pre>
+      `,
+      datatypes: `
+        <h2>JavaScript Data Types</h2>
+        <p>JavaScript supports a variety of data types, including:</p>
+        <ul>
+          <li><code>number</code> - Any numeric value (e.g., 10, 3.14, -200)</li>
+          <li><code>string</code> - Text (e.g., "Hello", "World")</li>
+          <li><code>boolean</code> - True or false values</li>
+          <li><code>object</code> - A collection of key-value pairs (e.g., <code>{name: "John", age: 25}</code>)</li>
+          <li><code>undefined</code> - Represents a variable that has been declared but not assigned a value</li>
+        </ul>
+      `,
+      operators: `
+        <h2>JavaScript Operators</h2>
+        <p>Operators are used to perform operations on variables and values. Here are some common operators in JavaScript:</p>
+        <table border="1">
+          <tr><th>Operator</th><th>Name</th><th>Description</th><th>Example</th></tr>
+          <tr><td>+</td><td>Addition</td><td>Adds two values</td><td>x + y</td></tr>
+          <tr><td>-</td><td>Subtraction</td><td>Subtracts one value from another</td><td>x - y</td></tr>
+          <tr><td>*</td><td>Multiplication</td><td>Multiplies two values</td><td>x * y</td></tr>
+          <tr><td>/</td><td>Division</td><td>Divides one value by another</td><td>x / y</td></tr>
+          <tr><td>%</td><td>Modulus</td><td>Returns the remainder of division</td><td>x % y</td></tr>
+          <tr><td>++</td><td>Increment</td><td>Increases the value of a variable by 1</td><td>x++</td></tr>
+          <tr><td>--</td><td>Decrement</td><td>Decreases the value of a variable by 1</td><td>x--</td></tr>
+        </table>
+      `,
+      examples: `
+        <h2>JavaScript Examples</h2>
+        <pre>
+// Example 1: Simple addition
+let x = 5;
+let y = 10;
+let result = x + y;
+console.log("Result of addition:", result);
+
+// Example 2: String concatenation
+let name = "Alice";
+let greeting = "Hello, " + name;
+console.log(greeting);
+        </pre>
+        <h3>Expected Output:</h3>
+        <p><strong>Example 1: Simple addition</strong></p>
+        <pre>Result of addition: 15</pre>
+        <p><strong>Example 2: String concatenation</strong></p>
+        <pre>Hello, Alice</pre>
+      `,
+      quiz: `
+        <h2>JavaScript Quiz</h2>
+        <div class="quiz-section">
+          <div class="quiz-question">
+            <p><strong>1. What is the correct way to print in JavaScript?</strong></p>
+            <label><input type="radio" name="q1" value="a"> echo("Hello");</label>
+            <label><input type="radio" name="q1" value="b"> console.log("Hello");</label>
+            <label><input type="radio" name="q1" value="c"> print("Hello");</label>
+          </div>
+          <div class="quiz-question">
+            <p><strong>2. Which data type is used to store text?</strong></p>
+            <label><input type="radio" name="q2" value="a"> number</label>
+            <label><input type="radio" name="q2" value="b"> string</label>
+            <label><input type="radio" name="q2" value="c"> boolean</label>
+          </div>
+          <button class="btn" onclick="checkQuiz()">Submit Answers</button>
+          <p id="quiz-result"></p>
+        </div>
+      `
+    };
+
+    function loadContent(topic) {
+      document.getElementById("content").innerHTML = content[topic] || "<h2>Content not found</h2>";
+    }
+
+    function checkQuiz() {
+      const answer1 = document.querySelector('input[name="q1"]:checked');
+      const answer2 = document.querySelector('input[name="q2"]:checked');
+      let score = 0;
+
+      if (answer1 && answer1.value === "b") score++;
+      if (answer2 && answer2.value === "b") score++;
+
+      const result = document.getElementById("quiz-result");
+      result.innerHTML = `You got ${score}/2 correct.`;
+    }
+  </script>
+
+</body>
+</html>
 
