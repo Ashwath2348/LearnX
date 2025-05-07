@@ -1,1 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Getting Started</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            min-height: 100vh;
+        }
 
+        .sidebar {
+            background-color: #f1f1f1;
+            width: 250px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .sidebar h2 {
+            color: #333;
+            margin-top: 0;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar li a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: #555;
+            border-left: 5px solid transparent;
+            transition: background-color 0.3s ease, border-left-color 0.3s ease;
+        }
+
+        .sidebar li a:hover {
+            background-color: #ddd;
+            border-left-color: #5cb85c; /* Example LearnX green */
+        }
+
+        .content {
+            flex-grow: 1;
+            padding: 30px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+        }
+
+        .content h1 {
+            color: #333;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .navigation a {
+            display: inline-block;
+            padding: 10px 20px;
+            text-decoration: none;
+            background-color: #5cb85c; /* Example LearnX green */
+            color: white;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .navigation a:hover {
+            background-color: #4cae4c;
+        }
+
+        /* Example LearnX inspired styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+        }
+
+        .sidebar {
+            background-color: #fff;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .sidebar h2 {
+            color: #2c3e50;
+        }
+
+        .sidebar li a {
+            color: #34495e;
+        }
+
+        .sidebar li a:hover {
+            background-color: #ecf0f1;
+            border-left-color: #2ecc71; /* Another LearnX green */
+            color: #2ecc71;
+        }
+
+        .content h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+
+        .navigation a {
+            background-color: #2ecc71; /* LearnX green */
+        }
+
+        .navigation a:hover {
+            background-color: #27ae60;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Python Tutorial</h2>
+        <ul>
+            <li><a href="#">Python HOME</a></li>
+            <li><a href="#">Python Intro</a></li>
+            <li><a href="#" class="active">Python Get Started</a></li>
+            <li><a href="#">Python Syntax</a></li>
+            <li><a href="#">Python Comments</a></li>
+            <li><a href="#">Python Variables</a></li>
+            <li><a href="#">Python Data Types</a></li>
+            <li><a href="#">Python Numbers</a></li>
+            <li><a href="#">Python Casting</a></li>
+            <li><a href="#">Python Strings</a></li>
+            <li><a href="#">Python Booleans</a></li>
+            <li><a href="#">Python Operators</a></li>
+            <li><a href="#">Python Lists</a></li>
+            <li><a href="#">Python Tuples</a></li>
+            <li><a href="#">Python Sets</a></li>
+            <li><a href="#">Python Dictionaries</a></li>
+            <li><a href="#">Python If...Else</a></li>
+            <li><a href="#">Python Match</a></li>
+            <li><a href="#">Python While Loops</a></li>
+            </ul>
+    </div>
+    <div class="content">
+        <h1>Python Install</h1>
+        <p>Many PCs and Macs will have python already installed.</p>
+        <p>To check if you have python installed on a Windows PC, search in the start bar for Python or run the following on the Command Line (cmd.exe):</p>
+        <pre><code>C:\Users\Your Name>python --version</code></pre>
+        <p>To check if you have python installed on a Linux or Mac, then on the terminal run:</p>
+        <pre><code>python --version</code></pre>
+        <p>If you do not have Python installed on your computer, you can download it for free from the following website: <a href="https://www.python.org/">https://www.python.org/</a></p>
+
+        <h2>Python Quickstart</h2>
+        <p>Python is an interpreted, high-level, general-purpose programming language.</p>
+        <p>It was created by Guido van Rossum during 1985- 1990. Like Perl, Python source code is also available under the GNU General Public License (GPL).</p>
+        <p>Python is designed to be highly readable. It aims to have an uncluttered visual layout, frequently using English keywords where other languages use punctuation.</p>
+
+        <div class="navigation">
+            <a href="#">&lt; Previous</a>
+            <a href="#">Next &gt;</a>
+        </div>
+    </div>
+</body>
+</html>
