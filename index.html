@@ -256,7 +256,19 @@
 </head>
 <body>
 
-
+//<div class="intro-screen" id="introScreen">
+    <h1>Hey there! 🌟</h1>
+    <p>Before we dive in, how are you feeling today?</p>
+    <video id="webcam" autoplay playsinline></video>
+    <button class="capture-button" onclick="captureImage()">Capture Image</button>
+    <canvas id="canvas" style="display: none;"></canvas>
+    <img class="captured-photo" id="capturedPhoto" alt="Captured photo"/>
+    <div class="mood-form">
+      <input type="text" id="moodInput" placeholder="e.g. happy, tired, sad" />
+      <button onclick="showMotivation()">Analyze</button>
+    </div>
+    <div id="quote-box"></div>
+  </div>
 
   <div class="main-content" id="mainContent">
     <header>
