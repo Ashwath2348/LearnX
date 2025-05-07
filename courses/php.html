@@ -1,1 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PHP Tutorial</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+      background-color: #fff8e1; /* Light yellow background */
+    }
+
+    .sidebar {
+      width: 250px;
+      background-color: #ffffff; /* White sidebar */
+      padding: 20px;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+      overflow-y: auto;
+    }
+
+    .sidebar h2 {
+      font-size: 20px;
+      margin-top: 0;
+      color: #ff6f00; /* Deep orange */
+    }
+
+    .sidebar ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .sidebar ul li {
+      margin: 10px 0;
+    }
+
+    .sidebar ul li a {
+      text-decoration: none;
+      color: #e65100; /* Darker orange */
+      display: block;
+      padding: 8px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .sidebar ul li a:hover {
+      background-color: #ffe0b2; /* Light orange hover */
+      color: #bf360c;
+    }
+
+    .main-content {
+      flex-grow: 1;
+      padding: 20px;
+      overflow-y: auto;
+      background-color: #fffde7; /* Pale yellow content area */
+    }
+
+    pre {
+      background: #fff3e0; /* Very light orange */
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .quiz-section {
+      margin-top: 30px;
+    }
+
+    .quiz-question {
+      margin-bottom: 20px;
+    }
+
+    .quiz-question label {
+      display: block;
+    }
+
+    .btn {
+      margin-top: 10px;
+      background-color: #ff8f00;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #ef6c00;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sidebar">
+    <h2>PHP Tutorial</h2>
+    <ul>
+      <li><a onclick="loadContent('intro')">PHP Intro</a></li>
+      <li><a onclick="loadContent('syntax')">PHP Syntax</a></li>
+      <li><a onclick="loadContent('variables')">PHP Variables</a></li>
+      <li><a onclick="loadContent('datatypes')">PHP Data Types</a></li>
+      <li><a onclick="loadContent('operators')">PHP Operators</a></li>
+      <li><a onclick="loadContent('examples')">Examples</a></li>
+      <li><a onclick="loadContent('quiz')">Quiz</a></li>
+    </ul>
+  </div>
+
+  <div class="main-content" id="content">
+    <h2>Welcome to PHP Tutorial</h2>
+    <p>Select a topic from the left to start learning PHP.</p>
+  </div>
+
+  <script>
+    const content = {
+      intro: `
+        <h2>PHP Introduction</h2>
+        <p>PHP (Hypertext Preprocessor) is a server-side scripting language designed for web development. It is widely used to build dynamic web pages and can be embedded into HTML.</p>
+        <p>PHP is open-source, easy to learn, and supports databases like MySQL, PostgreSQL, and SQLite.</p>
+      `,
+      syntax: `
+        <h2>PHP Syntax</h2>
+        <p>PHP code is written inside <code>&lt;?php ... ?&gt;</code> tags and usually embedded within HTML.</p>
+        <h3>Basic Syntax</h3>
+        <ul>
+          <li>Statements end with a semicolon (<code>;</code>).</li>
+          <li>Variables start with <code>$</code>.</li>
+          <li>PHP code is executed on the server.</li>
+        </ul>
+        <h3>Example</h3>
+        <pre>
+&lt;?php
+  // This is a comment
+  echo "Hello, World!";
+?&gt;
+        </pre>
+      `,
+      variables: `
+        <h2>PHP Variables</h2>
+        <p>Variables in PHP are declared using the <code>$</code> sign followed by the variable name.</p>
+        <pre>
+&lt;?php
+  $name = "John";
+  $age = 30;
+  echo "My name is $name and I am $age years old.";
+?&gt;
+        </pre>
+      `,
+      datatypes: `
+        <h2>PHP Data Types</h2>
+        <p>Common PHP data types:</p>
+        <ul>
+          <li><code>String</code> - Text (e.g., "Hello")</li>
+          <li><code>Integer</code> - Whole numbers (e.g., 10)</li>
+          <li><code>Float</code> - Decimal numbers (e.g., 3.14)</li>
+          <li><code>Boolean</code> - true or false</li>
+          <li><code>Array</code> - Collection of values</li>
+          <li><code>Object</code> - Instance of a class</li>
+        </ul>
+      `,
+      operators: `
+        <h2>PHP Operators</h2>
+        <table border="1">
+          <tr><th>Operator</th><th>Name</th><th>Description</th><th>Example</th></tr>
+          <tr><td>+</td><td>Addition</td><td>Adds two values</td><td>\$x + \$y</td></tr>
+          <tr><td>-</td><td>Subtraction</td><td>Subtracts two values</td><td>\$x - \$y</td></tr>
+          <tr><td>*</td><td>Multiplication</td><td>Multiplies two values</td><td>\$x * \$y</td></tr>
+          <tr><td>/</td><td>Division</td><td>Divides two values</td><td>\$x / \$y</td></tr>
+          <tr><td>%</td><td>Modulus</td><td>Remainder</td><td>\$x % \$y</td></tr>
+        </table>
+      `,
+      examples: `
+        <h2>PHP Examples</h2>
+        <pre>
+&lt;?php
+  \$x = 10;
+  \$y = 20;
+  \$sum = \$x + \$y;
+  echo "Sum is \$sum";
+
+  \$name = "Alice";
+  echo "Hello \$name!";
+?&gt;
+        </pre>
+        <h3>Expected Output:</h3>
+        <pre>Sum is 30
+Hello Alice!</pre>
+      `,
+      quiz: `
+        <h2>PHP Quiz</h2>
+        <div class="quiz-section">
+          <div class="quiz-question">
+            <p><strong>1. How do you write a variable in PHP?</strong></p>
+            <label><input type="radio" name="q1" value="a"> var name = "John";</label>
+            <label><input type="radio" name="q1" value="b"> \$name = "John";</label>
+            <label><input type="radio" name="q1" value="c"> name = "John";</label>
+          </div>
+          <div class="quiz-question">
+            <p><strong>2. What is the correct way to output text in PHP?</strong></p>
+            <label><input type="radio" name="q2" value="a"> echo "Hello";</label>
+            <label><input type="radio" name="q2" value="b"> print "Hello";</label>
+            <label><input type="radio" name="q2" value="c"> Both A and B</label>
+          </div>
+          <button class="btn" onclick="checkQuiz()">Submit Answers</button>
+          <p id="quiz-result"></p>
+        </div>
+      `
+    };
+
+    function loadContent(topic) {
+      document.getElementById("content").innerHTML = content[topic] || "<h2>Content not found</h2>";
+    }
+
+    function checkQuiz() {
+      const answer1 = document.querySelector('input[name="q1"]:checked');
+      const answer2 = document.querySelector('input[name="q2"]:checked');
+      let score = 0;
+
+      if (answer1 && answer1.value === "b") score++;
+      if (answer2 && answer2.value === "c") score++;
+
+      const result = document.getElementById("quiz-result");
+      result.innerHTML = \`You got \${score}/2 correct.\`;
+    }
+  </script>
+
+</body>
+</html>
 
