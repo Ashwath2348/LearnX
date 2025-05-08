@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>LearnX Learning Platform</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" /> 
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     * {
       box-sizing: border-box;
@@ -215,6 +215,27 @@
       color: #555;
     }
 
+    .login-link {
+      text-align: center;
+      margin: 60px 0;
+    }
+
+    .login-link a {
+      font-size: 1.1rem;
+      color: #04aa6d;
+      font-weight: bold;
+      text-decoration: none;
+      border: 2px solid #04aa6d;
+      padding: 12px 24px;
+      border-radius: 8px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .login-link a:hover {
+      background-color: #04aa6d;
+      color: #fff;
+    }
+
     footer {
       text-align: center;
       padding: 40px 20px;
@@ -235,7 +256,7 @@
 </head>
 <body>
 
-  <div class="intro-screen" id="introScreen">
+<div class="intro-screen" id="introScreen">
     <h1>Hey there! 🌟</h1>
     <p>Before we dive in, how are you feeling today?</p>
     <video id="webcam" autoplay playsinline></video>
@@ -253,9 +274,9 @@
     <header>
       <h1>LearnX</h1>
       <nav>
-        <a href="#">Courses</a>
-        <a href="#">AI Tutor</a>
-        <a href="#login">Login</a>
+        <a href="courses.html">Courses</a>
+        <a href="AITutor.html">AI Tutor</a>
+        <a href="login.html">Login</a>
       </nav>
     </header>
 
@@ -283,19 +304,8 @@
       </div>
     </section>
 
-    <!-- ✅ Login Section -->
-    <div id="login" class="section" style="padding: 40px; text-align: center;">
-      <h2 style="color: #04aa6d; font-size: 2rem;">Login</h2>
-      <form id="loginForm" style="max-width: 400px; margin: auto;">
-        <label for="email">Email:</label><br />
-        <input type="email" id="email" name="email" required style="padding: 12px; width: 100%; margin-top: 8px; margin-bottom: 16px; border-radius: 8px; border: 1px solid #ccc;" /><br />
-
-        <label for="password">Password:</label><br />
-        <input type="password" id="password" name="password" required style="padding: 12px; width: 100%; margin-top: 8px; margin-bottom: 16px; border-radius: 8px; border: 1px solid #ccc;" /><br />
-
-        <button type="submit" style="background-color: #04aa6d; color: white; padding: 12px 24px; border: none; border-radius: 8px; cursor: pointer;">Login</button>
-      </form>
-      <p id="loginResult" style="margin-top: 20px; color: #065; font-weight: bold;"></p>
+    <div class="login-link">
+      <a href="login.html">Get Started</a>
     </div>
 
     <footer>
@@ -322,6 +332,7 @@
       canvas.width = video.videoWidth;
       canvas.height = video.videoHeight;
       context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
       const imageUrl = canvas.toDataURL();
       capturedPhoto.src = imageUrl;
       capturedPhoto.style.display = "block";
@@ -346,28 +357,9 @@
       setTimeout(() => {
         document.getElementById("introScreen").style.display = "none";
         document.getElementById("mainContent").style.display = "block";
-      }, 3000);
+      }, 3000); // Delay before showing main content
     }
-
-    document.getElementById('loginForm').addEventListener('submit', async function (e) {
-      e.preventDefault();
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-
-      try {
-        const res = await fetch('http://localhost:3000/api/login', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, password })
-        });
-
-        const result = await res.json();
-        document.getElementById('loginResult').textContent = result.message;
-      } catch (err) {
-        document.getElementById('loginResult').textContent = 'Failed to connect to the server.';
-        console.error('Login error:', err);
-      }
-    });
   </script>
+
 </body>
 </html>
