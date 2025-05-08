@@ -256,7 +256,7 @@
 </head>
 <body>
 
-<div class="intro-screen" id="introScreen">
+  <div class="intro-screen" id="introScreen">
     <h1>Hey there! 🌟</h1>
     <p>Before we dive in, how are you feeling today?</p>
     <video id="webcam" autoplay playsinline></video>
@@ -332,7 +332,6 @@
       canvas.width = video.videoWidth;
       canvas.height = video.videoHeight;
       context.drawImage(video, 0, 0, canvas.width, canvas.height);
-
       const imageUrl = canvas.toDataURL();
       capturedPhoto.src = imageUrl;
       capturedPhoto.style.display = "block";
@@ -357,7 +356,7 @@
       setTimeout(() => {
         document.getElementById("introScreen").style.display = "none";
         document.getElementById("mainContent").style.display = "block";
-      }, 3000); // Delay before showing main content
+      }, 3000);
     }
   </script>
 
