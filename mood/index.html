@@ -1,1 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mood Analysis App</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #74ebd5, #ACB6E5);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: #333;
+    }
+
+    .video-container {
+      position: relative;
+      width: 100%;
+      max-width: 400px;
+      aspect-ratio: 4 / 3;
+      margin: 1rem auto;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .video-container video,
+    .video-container img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity 0.4s ease;
+      border-radius: 16px;
+    }
+
+    #capturedPhoto {
+      display: none;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      color: white;
+      font-size: 1.5rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      border-radius: 16px;
+    }
+
+    #captureButton {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-top: 10px;
+    }
+
+    #captureButton:hover {
+      background-color: #45a049;
+    }
+
+    #quote-box {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    #quote-box.show {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <div id="introScreen">
+    <h1>How are you feeling today?</h1>
+
+    <div class="video-container">
+      <video id="webcam" autoplay playsinline></video>
+      <img id="capturedPhoto" alt="Captured photo" />
+      <div id="analyzingOverlay" class="overlay">Analyzing...</div>
+    </div>
+
+    <button id="captureButton">Capture Mood</button>
+    <div id="quote-box"></div>
+  </div>
+
+  <div id="mainContent" style="display: none;">
+    <h2>Welcome to the next section!</h2>
+    <!-- More content here -->
+  </div>
+
+  <script>
+    const video = document.getElementById("webcam");
+    const captureButton = document.getElementById("captureButton");
+    const quoteBox = document.getElementById("quote-box");
+    const introScreen = document.getElementById("introScreen");
+    const mainContent = document.getElementById("mainContent");
+    const capturedPhoto = document.getElementById("capturedPhoto");
+    const overlay = document.getElementById("analyzingOverlay");
+
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(stream => {
+        video.srcObject = stream;
+      })
+      .catch(err => {
+        alert("Please allow webcam access to proceed.");
+        console.error("Webcam error:", err);
+      });
+
+    captureButton.addEventListener('click', async () => {
+      const canvas = document.createElement("canvas");
+      const context = canvas.getContext("2d");
+
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+      const imageDataUrl = canvas.toDataURL("image/png");
+
+      // Show the captured photo in place of webcam
+      capturedPhoto.src = imageDataUrl;
+      capturedPhoto.style.display = 'block';
+      video.style.opacity = '0';
+      overlay.style.opacity = '1';
+
+      const mood = await analyzeMood(imageDataUrl);
+      displayMoodQuote(mood);
+    });
+
+    async function analyzeMood(imageDataUrl) {
+      const response = await fetch("https://<your-region>.api.cognitive.microsoft.com/face/v1.0/detect?returnFaceAttributes=emotion", {
+        method: "POST",
+        headers: {
+          "Ocp-Apim-Subscription-Key": "<YOUR_FACE_API_KEY>",
+          "Content-Type": "application/octet-stream"
+        },
+        body: makeBlobFromBase64(imageDataUrl)
+      });
+
+      const data = await response.json();
+      if (data.length > 0) {
+        const emotions = data[0].faceAttributes.emotion;
+        const topEmotion = Object.entries(emotions).sort((a, b) => b[1] - a[1])[0][0];
+        return topEmotion;
+      }
+      return "neutral";
+    }
+
+    function makeBlobFromBase64(dataURL) {
+      const byteString = atob(dataURL.split(',')[1]);
+      const ab = new ArrayBuffer(byteString.length);
+      const ia = new Uint8Array(ab);
+      for (let i = 0; i < byteString.length; i++) ia[i] = byteString.charCodeAt(i);
+      return new Blob([ab], { type: 'image/png' });
+    }
+
+    function displayMoodQuote(mood) {
+      const quotes = {
+        happy: "That's great! Keep the energy going! 😊",
+        sad: "It's okay to feel sad. Brighter days are ahead 🌈",
+        angry: "Take a deep breath. You’ve got this! 💪",
+        surprised: "Wow! What a moment! 🌟",
+        neutral: "Whatever your mood — you're stronger than you know 💪"
+      };
+
+      quoteBox.textContent = quotes[mood] || quotes["neutral"];
+      quoteBox.classList.add('show');
+
+      setTimeout(() => {
+        overlay.style.opacity = '0';
+        introScreen.style.display = "none";
+        mainContent.style.display = "block";
+      }, 3000);
+    }
+  </script>
+</body>
+</html>
 
