@@ -292,6 +292,35 @@
     <div class="login-link">
       <a href="login.html">Get Started</a>
     </div>
+  <div id="login" class="section">
+  <h2>Login</h2>
+  <form id="loginForm">
+    <label for="email">Email:</label><br />
+    <input type="email" id="email" name="email" required /><br /><br />
+    <label for="password">Password:</label><br />
+    <input type="password" id="password" name="password" required /><br /><br />
+    <button type="submit">Login</button>
+  </form>
+  <p id="loginResult"></p>
+</div>
+
+<script>
+  document.getElementById('loginForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    const res = await fetch('http://localhost:3000/api/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password })
+    });
+
+    const result = await res.json();
+    document.getElementById('loginResult').textContent = result.message;
+  });
+</script>
+
 
     <footer>
       <p>&copy; 2025 LearnX. All rights reserved.</p>
